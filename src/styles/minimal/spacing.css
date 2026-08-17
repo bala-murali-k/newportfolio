@@ -1,3 +1,44 @@
-/* Spacing rules for the "minimal" style.
-   Not yet imported anywhere - v1 ships unstyled on purpose.
-   Reserved home for margin/padding/gap scale, breakpoints. */
+/* Spacing for the "minimal" style. Scoped under [data-style="minimal"];
+   see typography.css for why this is safe to import globally.
+
+   Note: these rules target structural regions (data-region/data-slot)
+   that the minimal layout defines - this file supplies the padding/gap
+   *values*, the layout (layout/minimal/core.layout.css) owns the fixed
+   positioning/scroll behavior itself. */
+
+[data-style='minimal'] [data-slot='header'] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 1.5rem;
+}
+
+[data-style='minimal'] [data-slot='footer'] {
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+}
+
+[data-style='minimal'] [data-slot='sidebar'] {
+  padding: 1.5rem 1rem;
+}
+
+[data-style='minimal'] [data-slot='sidebar'] ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+[data-style='minimal'] [data-region='main'] {
+  padding: 2rem;
+}
+
+[data-style='minimal'] [data-component='style-switcher'] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}

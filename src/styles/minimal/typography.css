@@ -1,3 +1,37 @@
-/* Typography rules for the "minimal" style.
-   Not yet imported anywhere - v1 ships unstyled on purpose.
-   This is the reserved home for font-family, sizes, weights, line-height. */
+/* Typography for the "minimal" style. Scoped under [data-style="minimal"]
+   so importing this file globally is safe - it only paints once minimal
+   is the active style (see context/global/style-context.tsx, which sets
+   data-style on <html>). Color values come from the active theme via the
+   --color-* custom properties that context sets, not hardcoded here. */
+
+[data-style='minimal'] {
+  font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+}
+
+[data-style='minimal'] h1,
+[data-style='minimal'] h2,
+[data-style='minimal'] h3 {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+[data-style='minimal'] h1 {
+  font-size: 2rem;
+}
+
+[data-style='minimal'] h2 {
+  font-size: 1.5rem;
+}
+
+[data-style='minimal'] a {
+  color: inherit;
+  text-decoration: none;
+}
+
+[data-style='minimal'] a:hover {
+  text-decoration: underline;
+}
