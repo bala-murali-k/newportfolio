@@ -1,10 +1,12 @@
 import { resolveContent } from '../resolveContent';
 import type { Project } from './projects.content';
 import { projectsContent as baseContent } from './projects.content';
-import { projectsContent as defaultStyleContent } from './default/projects.default.content';
+import { projectsContent as modernStyleContent } from './modern/projects.modern.content';
+import { projectsContent as minimalStyleContent } from './minimal/projects.minimal.content';
 
 const variants: Record<string, Project[]> = {
-  default: defaultStyleContent,
+  modern: modernStyleContent,
+  minimal: minimalStyleContent,
 };
 
 export function getProjectsContent(styleId: string): Project[] {

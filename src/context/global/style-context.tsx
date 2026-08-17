@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { getStyleConfig, listStyleConfigs, defaultStyleId } from '@styles/index';
-import type { StyleConfig } from '@styles/default/config';
+import type { StyleConfig } from '@styles/types';
 import type { Theme } from '@theme/types';
 
 const DEFAULT_THEME_ID = 'light';

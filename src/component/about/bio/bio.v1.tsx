@@ -9,7 +9,7 @@ export default function BioV1({ content }: BioProps) {
     <div data-component="bio">
       <p>{content.summary}</p>
       <ul>
-        {content.socials.map((social: any) => (
+        {content.socials.map((social) => (
           <li key={social.label}>
             <a href={social.url} target="_blank" rel="noreferrer">
               {social.label}

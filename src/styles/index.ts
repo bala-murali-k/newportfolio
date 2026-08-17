@@ -1,5 +1,6 @@
-import type { StyleConfig } from './default/config';
-import { defaultConfig } from './default/config';
+import type { StyleConfig } from './types';
+import { modernConfig } from './modern/config';
+import { minimalConfig } from './minimal/config';
 
 /**
  * Aggregates every style's own config into one lookup map. This file does
@@ -8,10 +9,11 @@ import { defaultConfig } from './default/config';
  * styles/<id>/config.ts and registering it here.
  */
 export const styleRegistry: Record<string, StyleConfig> = {
-  default: defaultConfig,
+  modern: modernConfig,
+  minimal: minimalConfig,
 };
 
-export const defaultStyleId = 'default';
+export const defaultStyleId = 'modern';
 
 export function getStyleConfig(styleId: string): StyleConfig {
   return styleRegistry[styleId] ?? styleRegistry[defaultStyleId];

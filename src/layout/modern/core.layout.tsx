@@ -14,7 +14,7 @@ interface CoreLayoutProps {
 
 export default function CoreLayout({ slots = {}, children }: CoreLayoutProps) {
   return (
-    <div data-layout="default">
+    <div data-layout="modern">
       <Slot name="header">{slots.header}</Slot>
 
       <div data-region="body">
