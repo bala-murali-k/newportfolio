@@ -3,9 +3,33 @@ export interface Social {
   url: string;
 }
 
+export interface ExperienceItem {
+  role: string;
+  organization: string;
+  location: string;
+  period: string;
+  highlights: string[];
+}
+
+export interface EducationItem {
+  degree: string;
+  school: string;
+  location: string;
+  period: string;
+  gpa?: string;
+}
+
+export interface SkillGroup {
+  category: string;
+  items: string[];
+}
+
 export interface AboutContent {
   summary: string;
   socials: Social[];
+  experience: ExperienceItem[];
+  education: EducationItem[];
+  skills: SkillGroup[];
 }
 
 /**
@@ -15,4 +39,7 @@ export interface AboutContent {
 export const aboutContent: AboutContent = {
   summary: 'Add a short introduction here.',
   socials: [],
+  experience: [],
+  education: [],
+  skills: [],
 };

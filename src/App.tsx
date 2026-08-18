@@ -8,24 +8,27 @@ import ProjectsPage from '@pages/projects';
 import AboutPage from '@pages/about';
 import ContactPage from '@pages/contact';
 
-// Styles that currently have a sidebar slot in their layout. Modern stays
-// bare/unstyled on purpose (a plain baseline to confirm the app still
-// works), so it's left out here even though its layout can technically
-// render a sidebar slot. Minimal is the one under active development.
-// TODO: once more styles grow real sidebars, move this onto StyleConfig
-// itself instead of listing ids here.
-const STYLES_WITH_SIDEBAR = new Set(['minimal']);
+// Styles whose layout moves navigation into a sidebar instead of the
+// header. This one flag decides three things together: the sidebar slot
+// gets filled, the header drops its own nav (rule: nav lives in exactly
+// one place), and the footer takes on contact info since header/sidebar
+// are already spoken for. Modern stays untouched - bare/unstyled on
+// purpose, a plain baseline to confirm the app still works.
+// TODO: once more styles grow sidebars, move this onto StyleConfig itself
+// instead of listing ids here.
+const STYLES_WITH_SIDEBAR_NAV = new Set(['minimal']);
 
 export default function App() {
   const { style } = useStyle();
   const Layout = style.layout;
+  const usesSidebarNav = STYLES_WITH_SIDEBAR_NAV.has(style.id);
 
   // Slot content is assembled here, where we know which style/layout is
   // active. The layout itself stays presentation-only (see layout/).
   const slots = {
-    header: <Header />,
-    footer: <Footer />,
-    ...(STYLES_WITH_SIDEBAR.has(style.id) ? { sidebar: <Sidebar /> } : {}),
+    header: <Header showNav={!usesSidebarNav} />,
+    footer: <Footer showContactInfo={usesSidebarNav} />,
+    ...(usesSidebarNav ? { sidebar: <Sidebar /> } : {}),
   };
 
   return (

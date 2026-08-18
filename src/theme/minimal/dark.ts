@@ -6,5 +6,9 @@ export const darkTheme: Theme = {
   colors: {
     background: '#0a0a0a',
     foreground: '#eaeaea',
+    surface: '#141414',
+    border: '#262626',
+    muted: '#9a9a97',
+    accent: '#7fd6ba',
   },
 };

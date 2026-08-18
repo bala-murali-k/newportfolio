@@ -2,10 +2,10 @@ import type { HomeContent } from '../home.content';
 
 export const homeContent: HomeContent = {
   hero: {
-    name: 'Your Name',
-    title: 'Engineer.',
+    name: 'Bala Murali',
+    title: 'Frontend / Full Stack Developer (React).',
   },
   intro: {
-    summary: 'Less noise, more signal.',
+    summary: 'React, REST APIs, clean components. 1+ year building internal tools that hold up.',
   },
 };

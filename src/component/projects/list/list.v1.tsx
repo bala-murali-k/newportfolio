@@ -12,9 +12,11 @@ export default function ListV1({ projects }: ListProps) {
           <h2>{project.title}</h2>
           <p>{project.description}</p>
           <p>{project.tags.join(', ')}</p>
-          <a href={project.link} target="_blank" rel="noreferrer">
-            View
-          </a>
+          {project.link && (
+            <a href={project.link} target="_blank" rel="noreferrer">
+              View
+            </a>
+          )}
         </li>
       ))}
     </ul>

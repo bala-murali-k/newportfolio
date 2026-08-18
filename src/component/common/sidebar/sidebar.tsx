@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { navContent } from '@content/common/nav.content';
 
 /**
@@ -13,7 +13,9 @@ export default function Sidebar() {
       <ul>
         {navContent.map((item) => (
           <li key={item.to}>
-            <Link to={item.to}>{item.label}</Link>
+            <NavLink to={item.to} end={item.to === '/'} className={({ isActive }) => (isActive ? 'active' : undefined)}>
+              {item.label}
+            </NavLink>
           </li>
         ))}
       </ul>
