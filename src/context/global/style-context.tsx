@@ -1,4 +1,4 @@
-import { createContext, useContext, useLayoutEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { getStyleConfig, listStyleConfigs, defaultStyleId } from '@styles/index';
 import type { StyleConfig } from '@styles/types';
@@ -26,15 +26,13 @@ export function StyleProvider({ children }: { children: ReactNode }) {
   const style = getStyleConfig(styleId);
   const theme = style.themes[themeId] ?? style.themes[DEFAULT_THEME_ID];
 
-  // Reflect active style/theme on <html> as the hook point future CSS attaches to,
-  // and expose the theme's colors as CSS custom properties (--color-*) so a
-  // style's own CSS can consume them without knowing which theme is active.
-  useLayoutEffect(() => {
-    const root = document.documentElement;
-    root.setAttribute('data-style', style.id);
-    root.setAttribute('data-theme', theme.id);
+  // Reflect active style/theme on <html> as the hook point CSS attaches to,
+  // and expose every theme color as a --color-<key> custom property.
+  useEffect(() => {
+    document.documentElement.setAttribute('data-style', style.id);
+    document.documentElement.setAttribute('data-theme', theme.id);
     Object.entries(theme.colors).forEach(([key, value]) => {
-      root.style.setProperty(`--color-${key}`, value);
+      document.documentElement.style.setProperty(`--color-${key}`, value);
     });
   }, [style.id, theme.id, theme.colors]);
 

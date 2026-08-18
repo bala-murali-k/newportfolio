@@ -1,4 +1,3 @@
-import type { ComponentType } from 'react';
 import type { Theme } from '../theme/types';
 
 export interface StyleConfig {
@@ -7,6 +6,5 @@ export interface StyleConfig {
   // whether this style follows the shared slot placement convention,
   // or is free to lay itself out however it wants
   followsSlotSystem: boolean;
-  layout: ComponentType<any>;
   themes: Record<string, Theme>;
 }

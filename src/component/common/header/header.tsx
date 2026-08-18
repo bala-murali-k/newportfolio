@@ -1,22 +1,20 @@
 import { Link } from 'react-router-dom';
+import { useStyle } from '@context/global/style-context';
 import { navContent } from '@content/common/nav.content';
 import ThemeSwitcher from '../theme-switcher';
 import StyleSwitcher from '../style-switcher';
+import styles from './header.module.css';
 
-interface HeaderProps {
-  /**
-   * Whether the header renders its own nav links. Styles whose layout
-   * puts navigation in a sidebar instead (see App.tsx) pass false here,
-   * so the header is left with just the style/theme controls.
-   */
-  showNav?: boolean;
-}
+export default function Header() {
+  const { styleId } = useStyle();
+  const isMinimal = styleId === 'minimal';
 
-export default function Header({ showNav = true }: HeaderProps) {
   return (
-    <header>
-      {showNav && (
-        <nav>
+    <header className={styles.header}>
+      <span className={styles.brand}>Dev</span>
+
+      {!isMinimal && (
+        <nav className={styles.nav}>
           {navContent.map((item) => (
             <Link key={item.to} to={item.to}>
               {item.label}
@@ -24,7 +22,8 @@ export default function Header({ showNav = true }: HeaderProps) {
           ))}
         </nav>
       )}
-      <div data-controls="appearance">
+
+      <div className={styles.controls}>
         <StyleSwitcher />
         <ThemeSwitcher />
       </div>

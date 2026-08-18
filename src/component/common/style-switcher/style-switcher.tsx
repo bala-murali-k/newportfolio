@@ -1,31 +1,26 @@
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useStyle } from '@context/global/style-context';
+import styles from './style-switcher.module.css';
 
-/**
- * Rotates through availableStyles one at a time ("< modern >") instead of
- * a dropdown. Always wraps - past the last style it loops back to the
- * first, and vice versa.
- */
 export default function StyleSwitcher() {
   const { styleId, availableStyles, switchStyle } = useStyle();
+  const index = availableStyles.findIndex((s) => s.id === styleId);
+  const current = availableStyles[index] ?? availableStyles[0];
 
-  const currentIndex = availableStyles.findIndex((s) => s.id === styleId);
-  const current = availableStyles[currentIndex] ?? availableStyles[0];
-
-  function step(direction: -1 | 1) {
+  function go(offset: number) {
     if (availableStyles.length === 0) return;
-    const total = availableStyles.length;
-    const nextIndex = (currentIndex + direction + total) % total;
+    const nextIndex = (index + offset + availableStyles.length) % availableStyles.length;
     switchStyle(availableStyles[nextIndex].id);
   }
 
   return (
-    <div data-component="style-switcher" aria-label="Style">
-      <button type="button" aria-label="Previous style" onClick={() => step(-1)}>
-        &lsaquo;
+    <div className={styles.switcher} data-control="style-switcher">
+      <button type="button" onClick={() => go(-1)} aria-label="Previous style">
+        <ChevronLeft size={16} aria-hidden="true" />
       </button>
-      <span data-current-style={current?.id}>{current?.name}</span>
-      <button type="button" aria-label="Next style" onClick={() => step(1)}>
-        &rsaquo;
+      <span>{current?.name.toLowerCase()}</span>
+      <button type="button" onClick={() => go(1)} aria-label="Next style">
+        <ChevronRight size={16} aria-hidden="true" />
       </button>
     </div>
   );

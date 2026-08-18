@@ -1,0 +1,9 @@
+/* Entry point for the "minimal" style's global CSS.
+   Visual rules (spacing, typography, scrollbar design, etc.) belong here,
+   not in layout/ - layout only owns structure and behavior. Add a new
+   style-owned CSS file by creating it in this folder and importing it
+   below. */
+
+@import './spacing.css';
+@import './typography.css';
+@import './scrollbar.css';

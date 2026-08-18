@@ -14,11 +14,10 @@ export interface HomeContent {
  */
 export const homeContent: HomeContent = {
   hero: {
-    name: 'Bala Murali',
-    title: 'Frontend / Full Stack Developer (React)',
+    name: 'Your Name',
+    title: 'Your Title',
   },
   intro: {
-    summary:
-      'Junior Full Stack Developer with 1+ year of experience building responsive web applications with React.',
+    summary: 'Add a short introduction here.',
   },
 };

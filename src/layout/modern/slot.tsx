@@ -6,10 +6,10 @@ interface SlotProps {
 }
 
 /**
- * Marks a named placement point inside a layout (header, footer, sidebar,
- * etc). Renders whatever content was given for that slot, or nothing if
- * unfilled. Carries no visual opinion - just a data-slot marker for CSS
- * to hook into later.
+ * Marks a named placement point inside modern's layout (header, footer,
+ * sidebar). Renders whatever content was given for that slot, or nothing
+ * if unfilled. Carries no visual opinion - just a data-slot marker for
+ * CSS to hook into.
  */
 export default function Slot({ name, children }: SlotProps) {
   if (!children) return null;

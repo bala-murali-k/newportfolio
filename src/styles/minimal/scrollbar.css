@@ -1,0 +1,31 @@
+/* Scrollbar rules for the "minimal" style.
+
+   Minimal's layout redirects vertical wheel input into horizontal scroll
+   on the main content region (see layout/minimal/core.layout.tsx) - that's
+   layout's job, it decides *how* scrolling behaves. What the scrollbar
+   *looks like* is a style concern, so it lives here instead: thin, flat,
+   and colored from the active theme so it stays correct across light/dark.
+
+   Scoped under [data-style='minimal'] so it never leaks into other styles. */
+
+[data-layout="minimal"] [data-region="scroll-progress"] {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: end;
+
+  width: var(--scroll-progress, 0%);
+  height: 3px;
+  background-color: var(--color-accent, currentColor);
+  z-index: 10;
+  pointer-events: none;
+  transition: width 0.05s ease-out;
+}
+
+[data-layout="minimal"] [data-region="main"] {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+[data-layout="minimal"] [data-region="main"]::-webkit-scrollbar {
+  display: none;
+}

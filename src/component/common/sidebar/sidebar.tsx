@@ -1,24 +1,36 @@
-import { NavLink } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { Briefcase, Home, Mail, User } from 'lucide-react';
+import type { ComponentType } from 'react';
 import { navContent } from '@content/common/nav.content';
+import styles from './sidebar.module.css';
 
-/**
- * Reusable sidebar, positioned by whichever layout declares a "sidebar"
- * slot (currently only layout/minimal). Carries no layout opinion of its
- * own - fixed positioning, width, and scroll behavior are the layout's
- * responsibility, not this component's.
- */
+const ICONS: Record<string, ComponentType<any>> = {
+  '/': Home,
+  '/about': User,
+  '/projects': Briefcase,
+  '/contact': Mail,
+};
+
 export default function Sidebar() {
+  const location = useLocation();
+
   return (
-    <nav aria-label="Sidebar navigation">
-      <ul>
-        {navContent.map((item) => (
-          <li key={item.to}>
-            <NavLink to={item.to} end={item.to === '/'} className={({ isActive }) => (isActive ? 'active' : undefined)}>
-              {item.label}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
+    <nav className={styles.nav}>
+      {navContent.map((item) => {
+        const Icon = ICONS[item.to] ?? Home;
+        const isActive = location.pathname === item.to;
+        return (
+          <Link
+            key={item.to}
+            to={item.to}
+            className={styles.link}
+            data-active={isActive || undefined}
+          >
+            <Icon size={18} />
+            <span className={styles.label}>{item.label}</span>
+          </Link>
+        );
+      })}
     </nav>
   );
 }

@@ -2,15 +2,11 @@ import type { StyleConfig } from './types';
 import { modernConfig } from './modern/config';
 import { minimalConfig } from './minimal/config';
 
-// Side-effect imports: every rule in these files is scoped under
-// [data-style="<id>"] (set on <html> by StyleProvider), so loading all of
-// them up front is safe - only the currently active style's rules ever
-// take effect. Modern's are still empty placeholders (bare HTML, on
-// purpose - it's the baseline used to confirm everything else works).
-import './modern/typography.css';
-import './modern/spacing.css';
-import './minimal/typography.css';
-import './minimal/spacing.css';
+// Each style's own CSS (spacing, typography, scrollbar, etc.) is scoped to
+// its [data-style='<id>'] attribute, so it's safe to load every style's
+// rules up front rather than swapping stylesheets on switchStyle().
+import './modern/index.css';
+import './minimal/index.css';
 
 /**
  * Aggregates every style's own config into one lookup map. This file does
@@ -23,7 +19,7 @@ export const styleRegistry: Record<string, StyleConfig> = {
   minimal: minimalConfig,
 };
 
-export const defaultStyleId = 'modern';
+export const defaultStyleId = 'minimal';
 
 export function getStyleConfig(styleId: string): StyleConfig {
   return styleRegistry[styleId] ?? styleRegistry[defaultStyleId];

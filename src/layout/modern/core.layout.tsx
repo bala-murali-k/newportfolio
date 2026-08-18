@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import Slot from '../slot';
+import Slot from './slot';
 
 interface LayoutSlots {
   header?: ReactNode;

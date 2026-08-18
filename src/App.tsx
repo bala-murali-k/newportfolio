@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { useStyle } from '@context/global/style-context';
+import Layout from '@layout/core.layout';
 import Header from '@component/common/header';
 import Footer from '@component/common/footer';
 import Sidebar from '@component/common/sidebar';
@@ -8,27 +9,17 @@ import ProjectsPage from '@pages/projects';
 import AboutPage from '@pages/about';
 import ContactPage from '@pages/contact';
 
-// Styles whose layout moves navigation into a sidebar instead of the
-// header. This one flag decides three things together: the sidebar slot
-// gets filled, the header drops its own nav (rule: nav lives in exactly
-// one place), and the footer takes on contact info since header/sidebar
-// are already spoken for. Modern stays untouched - bare/unstyled on
-// purpose, a plain baseline to confirm the app still works.
-// TODO: once more styles grow sidebars, move this onto StyleConfig itself
-// instead of listing ids here.
-const STYLES_WITH_SIDEBAR_NAV = new Set(['minimal']);
-
 export default function App() {
-  const { style } = useStyle();
-  const Layout = style.layout;
-  const usesSidebarNav = STYLES_WITH_SIDEBAR_NAV.has(style.id);
+  const { styleId } = useStyle();
 
-  // Slot content is assembled here, where we know which style/layout is
-  // active. The layout itself stays presentation-only (see layout/).
+  // Slot content is assembled here. Layout itself resolves which style's
+  // layout to mount internally (see layout/core.layout.tsx) - App only
+  // decides what goes into each slot. Sidebar navigation is currently a
+  // minimal-only concept - modern keeps its nav inline in the header.
   const slots = {
-    header: <Header showNav={!usesSidebarNav} />,
-    footer: <Footer showContactInfo={usesSidebarNav} />,
-    ...(usesSidebarNav ? { sidebar: <Sidebar /> } : {}),
+    header: <Header />,
+    footer: <Footer />,
+    ...(styleId === 'minimal' ? { sidebar: <Sidebar /> } : {}),
   };
 
   return (

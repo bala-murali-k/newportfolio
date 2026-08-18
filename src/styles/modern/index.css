@@ -1,0 +1,7 @@
+/* Entry point for the "modern" style's global CSS.
+   Mirrors styles/minimal/index.css - see that file for why this pattern
+   exists. Add a new style-owned CSS file by creating it in this folder
+   and importing it below. */
+
+@import './spacing.css';
+@import './typography.css';
