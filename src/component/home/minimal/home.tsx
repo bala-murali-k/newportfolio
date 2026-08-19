@@ -2,7 +2,8 @@ import { useStyle } from '@context/global/style-context';
 import Hero from './hero';
 import Intro from './intro';
 import Expertise from './expertise';
-import SpotlightV1 from './spotlight/spotlight.v1';
+import Spotlight from './spotlight';
+import ConnectV1 from './connect/connect.v1';
 import { getHomeContent } from '@content/home';
 
 export default function CoreHome() {
@@ -21,7 +22,10 @@ export default function CoreHome() {
         <Expertise content={content.expertise} />
       </section>
       <section data-component="home-section-4">
-        <SpotlightV1 />
+        <Spotlight content={content.spotlight} />
+      </section>
+      <section data-component="home-section-6">
+        <ConnectV1 content={content.connect} />
       </section>
     </>
   );

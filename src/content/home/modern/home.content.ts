@@ -34,4 +34,32 @@ export const homeContent: HomeContent = {
       level: 85,
     },
   ],
+  spotlight: {
+    number: '01',
+    title: 'This Portfolio',
+    highlights: [
+      'Minimal interface.',
+      'Thoughtful interactions.',
+      'Built from scratch.',
+    ],
+    preview: {
+      label: 'Preview',
+    },
+    cta: {
+      label: 'Explore',
+      href: '/projects',
+    },
+  },
+  connect: {
+    heading: 'CONNECT',
+    questions: [
+      'Got an idea, a project,',
+      'or just want to say hello?',
+    ],
+    statement: 'My inbox is always open.',
+    cta: {
+      label: 'Say hello',
+      href: 'mailto:hello@example.com',
+    },
+  },
 };

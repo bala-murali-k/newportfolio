@@ -256,3 +256,226 @@
     font-weight: 600;
     line-height: 1.4;
 }
+
+/* Spotlight section styles - same full-height centered slide and 70%-wide
+   inner column as intro/expertise, then diverges into a two-column layout
+   (index + title + highlights on the left, preview + CTA on the right) to
+   read as a distinct "featured work" moment rather than a repeat of the
+   list-style sections either side of it. */
+[data-style='minimal'] [data-component='spotlight'] {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: lighter;
+    margin: 0;
+    flex: 1;
+}
+
+[data-style='minimal'] [data-component='spotlight']>div {
+    width: 70%;
+}
+
+[data-style='minimal'] [data-component='spotlight'] h2 {
+    font-size: 3rem;
+    color: var(--color-accent);
+    font-weight: lighter;
+    margin: 0;
+}
+
+/* Thin rule under the heading, echoing the ASCII mock's full-width divider
+   and giving the section a distinct "masthead" moment before the content. */
+[data-style='minimal'] [data-component='spotlight'] [data-divider] {
+    width: 100%;
+    height: 1px;
+    margin: 1.5rem 0 3rem;
+    background-color: var(--color-border, rgba(125, 125, 125, 0.2));
+}
+
+[data-style='minimal'] [data-component='spotlight'] [data-content] {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+[data-style='minimal'] [data-component='spotlight'] [data-info] {
+    display: flex;
+    flex-direction: column;
+    max-width: 26rem;
+}
+
+[data-style='minimal'] [data-component='spotlight'] [data-index] {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    opacity: 0.8;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+}
+
+[data-style='minimal'] [data-component='spotlight'] h3 {
+    margin: 0.75rem 0 1.25rem;
+    font-size: 2.25rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-foreground);
+    line-height: 1.15;
+}
+
+[data-style='minimal'] [data-component='spotlight'] [data-highlights] {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+[data-style='minimal'] [data-component='spotlight'] [data-highlights] li {
+    padding: 0.35rem 0;
+    font-weight: lighter;
+    word-spacing: 0.25rem;
+    color: var(--color-foreground);
+    opacity: 0.7;
+}
+
+[data-style='minimal'] [data-component='spotlight'] [data-preview] {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+}
+
+[data-style='minimal'] [data-component='spotlight'] [data-preview-box] {
+    width: 20rem;
+    height: 13rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border, rgba(125, 125, 125, 0.2));
+    border-radius: 0.4rem;
+    color: var(--color-foreground);
+    opacity: 0.5;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+[data-style='minimal'] [data-component='spotlight'] [data-cta] {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    color: var(--color-accent);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    transition: gap 0.2s ease, transform 0.2s ease;
+}
+
+[data-style='minimal'] [data-component='spotlight'] [data-cta]:hover {
+    gap: 0.65rem;
+    transform: translateX(2px);
+}
+
+[data-style='minimal'] [data-component='spotlight'] [data-cta] svg {
+    width: 1.1em;
+    height: 1.1em;
+    flex-shrink: 0;
+}
+
+[data-component='spotlight'] [data-preview-box] img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Connect section styles - clean CTA section following intro/expertise/spotlight
+   pattern: full-height centered slide, 70%-wide inner column, accent heading,
+   light typography, with a distinct call-to-action layout. */
+[data-style='minimal'] [data-component='connect'] {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: lighter;
+    margin: 0;
+    flex: 1;
+}
+
+[data-style='minimal'] [data-component='connect']>div {
+    width: 70%;
+}
+
+[data-style='minimal'] [data-component='connect'] h2 {
+    font-size: 3rem;
+    color: var(--color-accent);
+    font-weight: lighter;
+    margin: 0;
+    letter-spacing: 0.15em;
+}
+
+[data-style='minimal'] [data-component='connect'] [data-content] {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+[data-style='minimal'] [data-component='connect'] [data-questions] {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+[data-style='minimal'] [data-component='connect'] [data-questions] p {
+    margin: 0;
+    padding: 0;
+    font-size: 1.5rem;
+    font-weight: lighter;
+    color: var(--color-foreground);
+    line-height: 1.4;
+    word-spacing: 0.25rem;
+}
+
+[data-style='minimal'] [data-component='connect'] [data-statement] {
+    margin: 0;
+    padding: 0;
+    font-size: 1.25rem;
+    font-weight: lighter;
+    color: var(--color-foreground);
+    opacity: 0.7;
+    word-spacing: 0.25rem;
+}
+
+[data-style='minimal'] [data-component='connect'] [data-cta] {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    color: var(--color-accent);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: gap 0.2s ease, transform 0.2s ease;
+    width: fit-content;
+}
+
+[data-style='minimal'] [data-component='connect'] [data-cta]:hover {
+    gap: 0.75rem;
+    transform: translateX(2px);
+}
+
+[data-style='minimal'] [data-component='connect'] [data-cta]:active {
+    transform: translateX(0);
+}
+
+[data-style='minimal'] [data-component='connect'] [data-arrow] {
+    display: inline-block;
+    font-size: 1.3em;
+    line-height: 1;
+}
