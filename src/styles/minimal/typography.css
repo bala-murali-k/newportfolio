@@ -9,6 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@400;700&display=swap');
 
 [data-style='minimal'] [data-slot='sidebar'] nav a {
    font-family: var(--font-sidebar, 'Bungee Hairline', sans-serif);
@@ -35,5 +36,13 @@
 }
 
 [data-style='minimal'] [data-component='hero'] span {
+   font-family: var(--font-hero, 'Stack Sans Headline', cursive, sans-serif);
+}
+
+[data-style='minimal'] [data-component='intro'] h2 {
+   font-family: var(--font-hero, 'Mozilla Headline', cursive, sans-serif);
+}
+
+[data-style='minimal'] [data-component='intro'] {
    font-family: var(--font-hero, 'Stack Sans Headline', cursive, sans-serif);
 }
