@@ -46,3 +46,11 @@
 [data-style='minimal'] [data-component='intro'] {
    font-family: var(--font-hero, 'Stack Sans Headline', cursive, sans-serif);
 }
+
+[data-style='minimal'] [data-component='expertise'] h2 {
+   font-family: var(--font-hero, 'Mozilla Headline', cursive, sans-serif);
+}
+
+[data-style='minimal'] [data-component='expertise'] {
+   font-family: var(--font-hero, 'Stack Sans Headline', cursive, sans-serif);
+}

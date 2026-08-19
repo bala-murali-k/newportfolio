@@ -1,7 +1,7 @@
 import { useStyle } from '@context/global/style-context';
 import Hero from './hero';
 import Intro from './intro';
-import Expertise from './expertise/expertise.v1'
+import Expertise from './expertise';
 import { getHomeContent } from '@content/home';
 
 export default function CoreHome() {
@@ -17,7 +17,7 @@ export default function CoreHome() {
         <Intro content={content.intro} />
       </section>
       <section data-component="home-section-3">
-        <Expertise />
+        <Expertise content={content.expertise} />
       </section>
     </>
   );

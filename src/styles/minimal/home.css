@@ -124,18 +124,119 @@
 }
 
 [data-style='minimal'] [data-component='intro'] a:hover {
-  gap: 1rem;
-  transform: translateY(-2px);
+    gap: 1rem;
+    transform: translateY(-2px);
 }
 
 [data-style='minimal'] [data-component='intro'] a:active {
-  transform: translateY(0);
+    transform: translateY(0);
 }
 
 [data-style='minimal'] [data-component='intro'] a svg {
-  width: 1.1em;
-  height: 1.1em;
-  flex-shrink: 0;
+    width: 1.1em;
+    height: 1.1em;
+    flex-shrink: 0;
 }
 
-/* Expertise styles */
+/* Expertise section styles - mirrors the intro section's proportions
+   (full-height centered slide, 70%-wide inner column, light weight type,
+   accent-colored heading) so the two sections read as one family. */
+[data-style='minimal'] [data-component='expertise'] {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: lighter;
+    margin: 0;
+    flex: 1;
+}
+
+[data-style='minimal'] [data-component='expertise']>div {
+    width: 70%;
+}
+
+[data-style='minimal'] [data-component='expertise'] h2 {
+    font-size: 3rem;
+    color: var(--color-accent);
+    font-weight: lighter;
+    margin: 0;
+}
+
+[data-style='minimal'] [data-component='expertise'] ul {
+    list-style: none;
+    padding: 0;
+}
+
+[data-style='minimal'] [data-component='expertise'] li {
+    padding: 1.25rem 0;
+}
+
+[data-style='minimal'] [data-component='expertise'] [data-heading] {
+    display: grid;
+    grid-template-columns: 2.5rem 220px 1fr;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+[data-style='minimal'] [data-component='expertise'] [data-index] {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    opacity: 0.8;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+}
+
+[data-style='minimal'] [data-component='expertise'] h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-foreground);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+[data-style='minimal'] [data-component='expertise'] li p {
+    margin: 0.5rem 0 1rem;
+    padding: 0;
+    padding-left: 3rem;
+    font-weight: lighter;
+    word-spacing: 0.25rem;
+    color: var(--color-foreground);
+    opacity: 0.7;
+}
+
+/* The % visual: a thin track filled to the item's level, plus the number
+   itself, so the bar carries meaning on its own even without the label. */
+[data-style='minimal'] [data-component='expertise'] [data-bar] {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+[data-style='minimal'] [data-component='expertise'] [data-bar-track] {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--color-border, rgba(125, 125, 125, 0.2));
+    overflow: hidden;
+}
+
+[data-style='minimal'] [data-component='expertise'] [data-bar-fill] {
+    height: 100%;
+    border-radius: 2px;
+    background-color: var(--color-accent);
+    transition: width 0.6s ease;
+}
+
+[data-style='minimal'] [data-component='expertise'] [data-bar-value] {
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    opacity: 0.8;
+    font-variant-numeric: tabular-nums;
+}

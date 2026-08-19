@@ -1,3 +1,13 @@
+export interface ExpertiseItem {
+  /** Display index, e.g. '01' - stored explicitly rather than derived so
+   *  items can be reordered or skip numbers without the markup changing. */
+  number: string;
+  title: string;
+  description: string;
+  /** Proficiency shown by the percentage bar, 0-100. */
+  level: number;
+}
+
 export interface HomeContent {
   hero: {
     name: string;
@@ -6,6 +16,7 @@ export interface HomeContent {
   intro: {
     summary: string;
   };
+  expertise: ExpertiseItem[];
 }
 
 /**
@@ -20,4 +31,30 @@ export const homeContent: HomeContent = {
   intro: {
     summary: 'Add a short introduction here.',
   },
+  expertise: [
+    {
+      number: '01',
+      title: 'Frontend',
+      description: 'Interfaces, interactions & design systems',
+      level: 90,
+    },
+    {
+      number: '02',
+      title: 'Backend',
+      description: 'APIs, databases & application architecture',
+      level: 80,
+    },
+    {
+      number: '03',
+      title: 'UI / UX',
+      description: 'Visual systems, usability & interaction',
+      level: 75,
+    },
+    {
+      number: '04',
+      title: 'Full-Stack',
+      description: 'Turning ideas into complete products',
+      level: 85,
+    },
+  ],
 };
