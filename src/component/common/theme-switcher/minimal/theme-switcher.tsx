@@ -1,6 +1,5 @@
 import { Moon, Sun } from 'lucide-react';
 import { useStyle } from '@context/global/style-context';
-import styles from './theme-switcher.module.css';
 
 export default function ThemeSwitcher() {
   const { themeId, toggleTheme } = useStyle();
@@ -9,7 +8,6 @@ export default function ThemeSwitcher() {
   return (
     <button
       type="button"
-      className={styles.button}
       onClick={toggleTheme}
       aria-label="Toggle theme"
       data-current-theme={themeId}

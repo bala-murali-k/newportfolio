@@ -1,0 +1,12 @@
+[data-style='minimal'] [data-slot='footer'] p {
+  font-size: 7rem;
+  font-weight: 300;
+  margin: 0;
+  text-align: justify;
+  text-align-last: justify;
+  text-justify: inter-character;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  line-height: 0.85;
+  transform: translateY(30%);
+}

@@ -15,5 +15,11 @@ export const darkTheme: Theme = {
     surface: '#1c1917',
     border: '#3a352f',
     accent: '#fb923c',
+
+    backgroundinverse: '#fafaf9',
+    foregroundinverse: '#1c1917',
+    surfaceinverse: '#ffffff',
+    borderinverse: '#e7e5e4',
+    accentinverse: '#ea580c',
   },
 };

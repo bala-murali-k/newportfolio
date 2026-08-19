@@ -1,13 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Briefcase, Home, Mail, User } from 'lucide-react';
+import { PanelsTopLeft, Home, NotebookTabs, Info } from 'lucide-react';
 import type { ComponentType } from 'react';
 import { navContent } from '@content/common/nav.content';
 
 const ICONS: Record<string, ComponentType<any>> = {
   '/': Home,
-  '/about': User,
-  '/projects': Briefcase,
-  '/contact': Mail,
+  '/about': Info,
+  '/projects': PanelsTopLeft,
+  '/contact': NotebookTabs,
 };
 
 /**

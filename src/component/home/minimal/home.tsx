@@ -8,9 +8,13 @@ export default function CoreHome() {
   const content = getHomeContent(styleId);
 
   return (
-    <section data-component="core.home">
-      <Hero content={content.hero} />
-      <Intro content={content.intro} />
-    </section>
+    <>
+      <section data-component="home-section-1">
+        <Hero content={content.hero} />
+      </section>
+      <section data-component="home-section-2">
+        <Intro content={content.intro} />
+      </section>
+    </>
   );
 }

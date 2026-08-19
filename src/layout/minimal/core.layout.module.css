@@ -24,7 +24,7 @@
 
 .layout [data-slot='header'] {
   grid-area: header;
-  padding: 0.75rem 1.25rem;
+  width: 100%;
   border-bottom: 1px solid var(--color-border, transparent);
 }
 
@@ -42,8 +42,8 @@
 
 .layout [data-slot='footer'] {
   grid-area: footer;
-  padding: 0.75rem 1.25rem;
   border-top: 1px solid var(--color-border, transparent);
+  overflow: hidden;
   font-size: 0.875rem;
 }
 
@@ -54,6 +54,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: smooth;
+  display: flex;
 }
 
 .layout [data-region='main'] > * {

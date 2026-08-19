@@ -2,3 +2,8 @@
    Wired up via the style's index.css - still empty on purpose until
    real rules are needed.
    Reserved home for margin/padding/gap scale, breakpoints. */
+
+[data-style='minimal'] [data-slot='sidebar'] nav a {
+  letter-spacing: clamp(0.15rem, 0.6vw, 1.5rem);
+  transition: letter-spacing 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease, color 0.2s ease;
+}

@@ -1,6 +1,5 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useStyle } from '@context/global/style-context';
-import styles from './style-switcher.module.css';
 
 export default function StyleSwitcher() {
   const { styleId, availableStyles, switchStyle } = useStyle();
@@ -14,7 +13,7 @@ export default function StyleSwitcher() {
   }
 
   return (
-    <div className={styles.switcher} data-control="style-switcher">
+    <div data-control="style-switcher">
       <button type="button" onClick={() => go(-1)} aria-label="Previous style">
         <ChevronLeft size={16} aria-hidden="true" />
       </button>

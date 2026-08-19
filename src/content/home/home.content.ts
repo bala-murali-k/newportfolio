@@ -14,8 +14,8 @@ export interface HomeContent {
  */
 export const homeContent: HomeContent = {
   hero: {
-    name: 'Your Name',
-    title: 'Your Title',
+    name: 'Bala Murali',
+    title: 'Software developer',
   },
   intro: {
     summary: 'Add a short introduction here.',

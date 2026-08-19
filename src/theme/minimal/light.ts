@@ -13,5 +13,11 @@ export const lightTheme: Theme = {
     surface: '#ffffff',
     border: '#e7e5e4',
     accent: '#ea580c',
+
+    backgroundinverse: '#0c0a09',
+    foregroundinverse: '#f2f0ee',
+    surfaceinverse: '#1c1917',
+    borderinverse: '#3a352f',
+    accentinverse: '#fb923c',
   },
 };

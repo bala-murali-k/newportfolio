@@ -1,32 +1,14 @@
-import { Link } from 'react-router-dom';
-import { useStyle } from '@context/global/style-context';
-import { navContent } from '@content/common/nav.content';
+import { Link, useLocation } from 'react-router-dom';
 import ThemeSwitcher from '../../theme-switcher/core.theme-switcher';
 import StyleSwitcher from '../../style-switcher/core.style-switcher';
-import styles from './header.module.css';
 
 export default function Header() {
-  const { styleId } = useStyle();
-  const isMinimal = styleId === 'minimal';
 
   return (
-    <header className={styles.header}>
-      <span className={styles.brand}>Dev</span>
-
-      {!isMinimal && (
-        <nav className={styles.nav}>
-          {navContent.map((item) => (
-            <Link key={item.to} to={item.to}>
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-      )}
-
-      <div className={styles.controls}>
-        <StyleSwitcher />
-        <ThemeSwitcher />
-      </div>
+    <header>
+      <Link to={'/'}>Dev</Link>
+      <StyleSwitcher />
+      <ThemeSwitcher />
     </header>
   );
 }
