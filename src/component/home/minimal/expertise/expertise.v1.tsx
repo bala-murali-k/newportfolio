@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 interface ExpertiseItem {
   number: string;
   title: string;
@@ -10,13 +12,25 @@ interface ExpertiseProps {
 }
 
 export default function ExpertiseV1({ content }: ExpertiseProps) {
+  const [hoveredIndex, setHoveredIndex] = useState<string | number | null>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    setMousePos({ x: e.clientX, y: e.clientY });
+  };
+
   return (
     <div data-component="expertise">
       <div>
         <h2>Expertise</h2>
         <ul>
           {content.map((item) => (
-            <li key={item.number}>
+            <li
+              key={item.number}
+              onMouseEnter={() => setHoveredIndex(item.number)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              onMouseMove={handleMouseMove}
+            >
               <div data-heading>
                 <span data-index>{item.number}</span>
                 <h3>{item.title}</h3>
@@ -27,7 +41,19 @@ export default function ExpertiseV1({ content }: ExpertiseProps) {
                   </div>
                 </div>
               </div>
-              <p>{item.description}</p>
+
+              {/* Floating description active on hover */}
+              {hoveredIndex === item.number && (
+                <div
+                  data-tooltip
+                  style={{
+                    left: `${mousePos.x + 12}px`,
+                    top: `${mousePos.y + 12}px`,
+                  }}
+                >
+                  {item.description}
+                </div>
+              )}
             </li>
           ))}
         </ul>

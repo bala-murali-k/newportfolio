@@ -188,6 +188,10 @@
     letter-spacing: 0.05em;
 }
 
+[data-style='minimal'] [data-component='expertise'] li:hover {
+    cursor: default;
+}
+
 [data-style='minimal'] [data-component='expertise'] h3 {
     margin: 0;
     font-size: 1.5rem;
@@ -239,4 +243,16 @@
     color: var(--color-accent);
     opacity: 0.8;
     font-variant-numeric: tabular-nums;
+}
+
+[data-style='minimal'] [data-component='expertise'] [data-tooltip] {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    max-width: 300px;
+    padding: 0.6rem 0.9rem;
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
 }
