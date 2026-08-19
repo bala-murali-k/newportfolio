@@ -1,4 +1,4 @@
-import CoreHome from '@component/home/core.home';
+import CoreHome from '@component/home';
 
 export default function HomePage() {
   return <CoreHome />;

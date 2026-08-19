@@ -1,4 +1,4 @@
-import CoreContact from '@component/contact/core.contact';
+import CoreContact from '@component/contact';
 
 export default function ContactPage() {
   return <CoreContact />;

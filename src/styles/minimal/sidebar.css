@@ -1,0 +1,49 @@
+/* Sidebar rules for the "minimal" style.
+
+   The sidebar's structure (grid placement, fixed width, border, scroll
+   behavior) is owned by layout/minimal/core.layout.module.css - that's
+   the chrome region itself. This file only owns how the nav *inside*
+   that region looks: link color, spacing, hover/active state. Hooks into
+   the [data-slot='sidebar'] marker the layout's Slot already renders, so
+   nothing here needs to know about the component's internals.
+
+   Scoped under [data-style='minimal'] so it never leaks into other styles. */
+
+[data-style='minimal'] [data-slot='sidebar'] nav {
+  display: flex;
+  gap: 0.25rem;
+}
+
+[data-style='minimal'] [data-slot='sidebar'] nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.375rem;
+  color: var(--color-foreground);
+  text-decoration: none;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  transition: opacity 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+[data-style='minimal'] [data-slot='sidebar'] nav a:hover {
+  opacity: 1;
+  background-color: var(--color-background);
+}
+
+[data-style='minimal'] [data-slot='sidebar'] nav a[data-active] {
+  opacity: 1;
+  color: var(--color-accent);
+  background-color: var(--color-background);
+  font-weight: 600;
+}
+
+[data-style='minimal'] [data-slot='sidebar'] nav a svg {
+  flex-shrink: 0;
+  color: inherit;
+}
+
+[data-style='minimal'] [data-slot='sidebar'] nav a span {
+  white-space: nowrap;
+}

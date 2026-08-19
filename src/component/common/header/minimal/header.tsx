@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useStyle } from '@context/global/style-context';
 import { navContent } from '@content/common/nav.content';
-import ThemeSwitcher from '../theme-switcher';
-import StyleSwitcher from '../style-switcher';
+import ThemeSwitcher from '../../theme-switcher/core.theme-switcher';
+import StyleSwitcher from '../../style-switcher/core.style-switcher';
 import styles from './header.module.css';
 
 export default function Header() {

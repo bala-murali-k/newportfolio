@@ -1,16 +1,15 @@
-import { resolveContent } from '../resolveContent';
 import type { AboutContent } from './about.content';
-import { aboutContent as baseContent } from './about.content';
-import { aboutContent as modernStyleContent } from './modern/about.modern.content';
-import { aboutContent as minimalStyleContent } from './minimal/about.minimal.content';
+import { aboutContent as defaultContent } from './about.content';
+import { aboutContent as minimalContent } from './minimal/about.content';
+import { aboutContent as modernContent } from './modern/about.content';
 
-const variants: Record<string, AboutContent> = {
-  modern: modernStyleContent,
-  minimal: minimalStyleContent,
+const contentMap: Record<string, AboutContent> = {
+  minimal: minimalContent,
+  modern: modernContent,
 };
 
 export function getAboutContent(styleId: string): AboutContent {
-  return resolveContent(styleId, variants, baseContent);
+  return contentMap[styleId] ?? defaultContent;
 }
 
-export type { AboutContent, Social } from './about.content';
+export type { AboutContent } from './about.content';

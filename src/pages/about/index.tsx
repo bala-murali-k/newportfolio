@@ -1,4 +1,4 @@
-import CoreAbout from '@component/about/core.about';
+import CoreAbout from '@component/about';
 
 export default function AboutPage() {
   return <CoreAbout />;

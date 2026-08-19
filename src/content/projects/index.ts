@@ -1,16 +1,15 @@
-import { resolveContent } from '../resolveContent';
 import type { Project } from './projects.content';
-import { projectsContent as baseContent } from './projects.content';
-import { projectsContent as modernStyleContent } from './modern/projects.modern.content';
-import { projectsContent as minimalStyleContent } from './minimal/projects.minimal.content';
+import { projectsContent as defaultContent } from './projects.content';
+import { projectsContent as minimalContent } from './minimal/projects.content';
+import { projectsContent as modernContent } from './modern/projects.content';
 
-const variants: Record<string, Project[]> = {
-  modern: modernStyleContent,
-  minimal: minimalStyleContent,
+const contentMap: Record<string, Project[]> = {
+  minimal: minimalContent,
+  modern: modernContent,
 };
 
 export function getProjectsContent(styleId: string): Project[] {
-  return resolveContent(styleId, variants, baseContent);
+  return contentMap[styleId] ?? defaultContent;
 }
 
 export type { Project } from './projects.content';

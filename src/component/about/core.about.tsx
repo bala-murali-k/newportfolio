@@ -1,15 +1,21 @@
+import type { ComponentType } from 'react';
 import { useStyle } from '@context/global/style-context';
-import Bio from './bio';
-import { getAboutContent } from '@content/about';
+import { defaultStyleId } from '@styles/index';
+import ModernAbout from './modern';
+import MinimalAbout from './minimal';
+
+/**
+ * Registry of style id -> that style's own About implementation. Add a new
+ * style by creating component/about/<id>/about.tsx (+ index.ts) and
+ * registering it here - nothing outside this file needs to change.
+ */
+const variants: Record<string, ComponentType> = {
+  modern: ModernAbout,
+  minimal: MinimalAbout,
+};
 
 export default function CoreAbout() {
   const { styleId } = useStyle();
-  const content = getAboutContent(styleId);
-
-  return (
-    <section data-component="core.about">
-      <h1>About</h1>
-      <Bio content={content} />
-    </section>
-  );
+  const Variant = variants[styleId] ?? variants[defaultStyleId];
+  return <Variant />;
 }

@@ -1,16 +1,15 @@
-import { resolveContent } from '../resolveContent';
 import type { HomeContent } from './home.content';
-import { homeContent as baseContent } from './home.content';
-import { homeContent as modernStyleContent } from './modern/home.modern.content';
-import { homeContent as minimalStyleContent } from './minimal/home.minimal.content';
+import { homeContent as defaultContent } from './home.content';
+import { homeContent as minimalContent } from './minimal/home.content';
+import { homeContent as modernContent } from './modern/home.content';
 
-const variants: Record<string, HomeContent> = {
-  modern: modernStyleContent,
-  minimal: minimalStyleContent,
+const contentMap: Record<string, HomeContent> = {
+  minimal: minimalContent,
+  modern: modernContent,
 };
 
 export function getHomeContent(styleId: string): HomeContent {
-  return resolveContent(styleId, variants, baseContent);
+  return contentMap[styleId] ?? defaultContent;
 }
 
 export type { HomeContent } from './home.content';

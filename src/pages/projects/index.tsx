@@ -1,4 +1,4 @@
-import CoreProjects from '@component/projects/core.projects';
+import CoreProjects from '@component/projects';
 
 export default function ProjectsPage() {
   return <CoreProjects />;
