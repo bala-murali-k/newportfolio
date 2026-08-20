@@ -43,6 +43,9 @@ export default function CoreContact() {
       <section data-component="contact-section-2">
         <HeroV1 />
       </section>
+      <section data-component="contact-section-2">
+        <Form values={values} labels={contactContent.labels} onChange={handleChange} onSubmit={handleSubmit} />
+      </section>
       <section data-component="contact-section-3">
         <FinisherV1 />
       </section>

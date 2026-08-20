@@ -7,7 +7,7 @@ export default function HeroV1() {
       <div>
         <h1>Contact</h1>
         <p>Start a conversation.</p>
-        <a href="#">Write an email <ArrowRight /></a>
+        <a>Write an email <ArrowRight /></a>
       </div>
     </div>
   );

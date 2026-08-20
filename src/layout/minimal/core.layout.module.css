@@ -68,6 +68,6 @@
   min-width: auto;
 }
 
-.layout [data-style='minimal'] [data-region='main'] > [data-component="contact-section-1"] {
+.layout [data-region='main'] > [data-component="contact-section-1"] {
   min-width: auto;
 }
