@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
-import PortfolioV2 from '../../../../../public/images/projects/portfolio_v2_ss.png'
 
 interface SpotlightProps {
   content: {

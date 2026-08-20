@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { StyleProvider } from '@context/global/style-context';
 import App from './App';
 import './index.css';
+import './utils/fontawesome/fontawesome';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

@@ -3,6 +3,9 @@ import type { FormEvent } from 'react';
 import { useStyle } from '@context/global/style-context';
 import Form from './form';
 import type { ContactFormValues } from './form';
+import Channels from './channels';
+import HeroV1 from './hero';
+import FinisherV1 from './finisher/finisher.v1';
 import { getContactContent } from '@content/contact';
 
 /**
@@ -32,19 +35,17 @@ export default function CoreContact() {
     setSubmitted(true);
   }
 
-  if (submitted) {
-    return (
-      <section data-component="core.contact">
-        <h1>Contact</h1>
-        <p>{contactContent.successMessage}</p>
-      </section>
-    );
-  }
-
   return (
-    <section data-component="core.contact">
-      <h1>Contact</h1>
-      <Form values={values} labels={contactContent.labels} onChange={handleChange} onSubmit={handleSubmit} />
-    </section>
+    <>
+      <section data-component="contact-section-1">
+        <Channels channels={contactContent.channels} />
+      </section>
+      <section data-component="contact-section-2">
+        <HeroV1 />
+      </section>
+      <section data-component="contact-section-3">
+        <FinisherV1 />
+      </section>
+    </>
   );
 }

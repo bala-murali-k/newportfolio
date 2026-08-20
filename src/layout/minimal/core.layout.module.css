@@ -55,6 +55,7 @@
   overflow-y: hidden;
   scroll-behavior: smooth;
   display: flex;
+  position: relative;
 }
 
 .layout [data-region='main'] > * {
@@ -64,5 +65,9 @@
 }
 
 .layout [data-region='main'] >:last-child {
+  min-width: auto;
+}
+
+.layout [data-style='minimal'] [data-region='main'] > [data-component="contact-section-1"] {
   min-width: auto;
 }

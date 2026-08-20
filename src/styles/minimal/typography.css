@@ -83,3 +83,15 @@
 [data-style='minimal'] [data-component='finish'] h1 {
    font-family: var(--font-header, 'Julius Sans One', sans-serif);
 }
+
+[data-style='minimal'] [data-component="contact-channels"] [data-tooltip] {
+   font-family: var(--font-header, 'Julius Sans One', sans-serif);
+}
+
+[data-style='minimal'] [data-component="contact-hero"] h1 {
+   font-family: var(--font-header, 'Mozilla Headline', sans-serif);
+}
+
+[data-style='minimal'] [data-component="contact-hero"] {
+   font-family: var(--font-header, 'Stack Sans Headline', sans-serif);
+}

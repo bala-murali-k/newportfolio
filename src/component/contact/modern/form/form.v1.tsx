@@ -1,6 +1,6 @@
 import type { FormEvent } from 'react';
 import Button from '@component/common/button';
-import type { ContactContent } from '@content/contact/contact.content';
+import type { ContactData } from '@content/contact/contact.content';
 
 export interface ContactFormValues {
   name: string;
@@ -10,7 +10,7 @@ export interface ContactFormValues {
 
 interface FormProps {
   values: ContactFormValues;
-  labels: ContactContent['labels'];
+  labels: ContactData['labels'];
   onChange: (field: keyof ContactFormValues, value: string) => void;
   onSubmit: (e: FormEvent) => void;
 }

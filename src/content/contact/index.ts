@@ -1,15 +1,14 @@
-import type { ContactContent } from './contact.content';
-import { contactContent as defaultContent } from './contact.content';
-import { contactContent as minimalContent } from './minimal/contact.content';
-import { contactContent as modernContent } from './modern/contact.content';
+import { ContactData, contactContent } from './contact.content';
+import { contactMinimalContent } from './minimal/contact.content';
+import { contactModernContent } from './modern/contact.content';
 
-const contentMap: Record<string, ContactContent> = {
-  minimal: minimalContent,
-  modern: modernContent,
+const contentMap: Record<string, ContactData> = {
+  minimal: contactMinimalContent,
+  modern: contactModernContent,
 };
 
-export function getContactContent(styleId: string): ContactContent {
-  return contentMap[styleId] ?? defaultContent;
+export function getContactContent(styleId: string): ContactData {
+  return contentMap[styleId] || contactContent;
 }
 
-export type { ContactContent } from './contact.content';
+export * from './contact.content';
