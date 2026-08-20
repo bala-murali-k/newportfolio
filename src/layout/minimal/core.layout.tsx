@@ -31,7 +31,7 @@ export default function CoreLayout({ slots = {}, children }: CoreLayoutProps) {
     if (!main) return;
 
     const handleWheel = (e: WheelEvent) => {
-      const SCROLL_SPEED = 3.5;
+      const SCROLL_SPEED = 1.5;
       if (e.deltaY === 0) return;
       e.preventDefault();
       main.scrollLeft += e.deltaY * SCROLL_SPEED;

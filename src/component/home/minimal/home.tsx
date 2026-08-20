@@ -4,6 +4,7 @@ import Intro from './intro';
 import Expertise from './expertise';
 import Spotlight from './spotlight';
 import ConnectV1 from './connect/connect.v1';
+import FinisherV1 from './finisher/finisher.v1';
 import { getHomeContent } from '@content/home';
 
 export default function CoreHome() {
@@ -26,6 +27,9 @@ export default function CoreHome() {
       </section>
       <section data-component="home-section-6">
         <ConnectV1 content={content.connect} />
+      </section>
+      <section data-component="home-section-7">
+        <FinisherV1 />
       </section>
     </>
   );

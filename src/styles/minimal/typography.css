@@ -10,6 +10,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
 
 [data-style='minimal'] [data-slot='sidebar'] nav a {
    font-family: var(--font-sidebar, 'Bungee Hairline', sans-serif);
@@ -77,4 +78,8 @@
 
 [data-style='minimal'] [data-component='connect'] h3 {
    font-family: var(--font-header, 'Syncopate', sans-serif);
+}
+
+[data-style='minimal'] [data-component='finish'] h1 {
+   font-family: var(--font-header, 'Julius Sans One', sans-serif);
 }

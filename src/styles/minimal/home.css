@@ -385,10 +385,10 @@
 }
 
 [data-component='spotlight'] [data-preview-box] img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /* Connect section styles - clean CTA section following intro/expertise/spotlight
@@ -415,7 +415,7 @@
     color: var(--color-accent);
     font-weight: lighter;
     margin: 0;
-    letter-spacing: 0.15em;
+    /* letter-spacing: 0.15em; */
 }
 
 [data-style='minimal'] [data-component='connect'] [data-content] {
@@ -478,4 +478,35 @@
     display: inline-block;
     font-size: 1.3em;
     line-height: 1;
+}
+
+/* Finisher style */
+[data-style='minimal'] [data-component="home-section-7"] {
+    position: relative;
+}
+
+[data-style='minimal'] [data-component='finish'] {
+    flex-shrink: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex: 1;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    container-type: size;
+}
+
+[data-style='minimal'] [data-component='finish'] h1 {
+    margin: 0;
+    font-size: 14cqh;
+    font-weight: 600;
+    line-height: 0.75;
+    color: var(--color-accent);
 }

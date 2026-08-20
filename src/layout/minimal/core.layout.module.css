@@ -62,3 +62,7 @@
   height: 100%;
   box-sizing: border-box;
 }
+
+.layout [data-region='main'] >:last-child {
+  min-width: auto;
+}
