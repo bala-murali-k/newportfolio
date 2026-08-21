@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { requestMinimalScroll } from "@/utils/hooks/minimal/use.minimal.scroll";
 
 export default function HeroV1() {
 
@@ -7,7 +8,7 @@ export default function HeroV1() {
       <div>
         <h1>Contact</h1>
         <p>Start a conversation.</p>
-        <a>Write an email <ArrowRight /></a>
+        <a onClick={(event) => { event.preventDefault(), requestMinimalScroll(100) }}>Write an email <ArrowRight /></a>
       </div>
     </div>
   );

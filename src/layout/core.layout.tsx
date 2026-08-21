@@ -10,6 +10,7 @@ export interface CoreLayoutSlots {
 }
 
 export interface CoreLayoutProps {
+  pageKey: string;
   slots?: CoreLayoutSlots;
   children: ReactNode;
 }

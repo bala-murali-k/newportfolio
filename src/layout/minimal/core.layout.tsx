@@ -2,17 +2,9 @@ import { useEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
 import Slot from './slot';
 import styles from './core.layout.module.css';
-
-interface LayoutSlots {
-  header?: ReactNode;
-  footer?: ReactNode;
-  sidebar?: ReactNode;
-}
-
-interface CoreLayoutProps {
-  slots?: LayoutSlots;
-  children: ReactNode;
-}
+import { CoreLayoutProps } from '../core.layout';
+import { subscribeToMinimalScroll } from '@/utils/hooks/minimal/use.minimal.scroll';
+import { ArrowLeft } from 'lucide-react';
 
 /**
  * Minimal's layout: header, sidebar, and footer are fixed chrome - they
@@ -23,15 +15,23 @@ interface CoreLayoutProps {
  * (left <-> right), since the page itself doesn't scroll vertically.
  * Mobile behavior is deferred.
  */
-export default function CoreLayout({ slots = {}, children }: CoreLayoutProps) {
+export default function CoreLayout({ pageKey, slots = {}, children }: CoreLayoutProps) {
   const mainRef = useRef<HTMLElement>(null);
+
+  function resetScroll() {
+    const main = mainRef.current;
+    if (!main) return;
+    main.scrollLeft = 0;
+  }
 
   useEffect(() => {
     const main = mainRef.current;
     if (!main) return;
+    const SCROLL_SPEED = 1.5;
+    const SCROLL_TO_ZERO_THRESHOLD = 5;
+    const SCROLL_TO_MAX_DISABLE_THRESHOLD = 90;
 
     const handleWheel = (e: WheelEvent) => {
-      const SCROLL_SPEED = 1.5;
       if (e.deltaY === 0) return;
       e.preventDefault();
       main.scrollLeft += e.deltaY * SCROLL_SPEED;
@@ -39,14 +39,24 @@ export default function CoreLayout({ slots = {}, children }: CoreLayoutProps) {
 
     const handleScroll = () => {
       const maxScroll = main.scrollWidth - main.clientWidth;
-
       if (maxScroll <= 0) return;
+      const progress = (main.scrollLeft / maxScroll) * 100;
+      const parent = main.parentElement;
+      if (!parent) return;
 
-      const progress = main.scrollLeft / maxScroll;
-
-      main.parentElement?.style.setProperty(
+      parent.style.setProperty(
         '--scroll-progress',
-        `${progress * 100}%`
+        `${progress}%`
+      );
+
+      parent.style.setProperty(
+        '--scroll-to-zero-visible',
+        progress >= SCROLL_TO_ZERO_THRESHOLD ? '1' : '0'
+      );
+
+      parent.style.setProperty(
+        '--scroll-to-max-disable',
+        progress >= SCROLL_TO_MAX_DISABLE_THRESHOLD ? '1' : '0'
       );
     };
 
@@ -61,11 +71,39 @@ export default function CoreLayout({ slots = {}, children }: CoreLayoutProps) {
     };
   }, []);
 
+  useEffect(() => {
+    return subscribeToMinimalScroll(
+      ({ percent, behavior }) => {
+        const main = mainRef.current;
+
+        if (!main) return;
+
+        const maxScroll =
+          main.scrollWidth - main.clientWidth;
+
+        const clampedPercent = Math.max(
+          0,
+          Math.min(percent, 100)
+        );
+
+        main.scrollTo({
+          left: maxScroll * (clampedPercent / 100),
+          behavior,
+        });
+      }
+    );
+  }, []);
+
+  useEffect(() => {
+    resetScroll()
+  }, [pageKey]);
+
   return (
     <div className={styles.layout} data-layout="minimal">
       <Slot name="header" data-region="header">{slots.header}</Slot>
       <Slot name="sidebar" data-region="sidebar">{slots.sidebar}</Slot>
       <main ref={mainRef} data-region="main">
+        <button onClick={(event) => { event.preventDefault(), resetScroll() }} layout-utility="scroll-to-zero"><ArrowLeft /></button>
         {children}
       </main>
       <div className="scroll-progress" data-region="scroll-progress"></div>

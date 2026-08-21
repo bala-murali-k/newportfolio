@@ -1,3 +1,16 @@
+@keyframes scroll-to-zero-visibility {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
 /* Desktop-only for now - mobile responsiveness is deferred. */
 .layout {
   height: 100vh;
@@ -58,16 +71,64 @@
   position: relative;
 }
 
-.layout [data-region='main'] > * {
+.layout [data-region='main']>* {
   min-width: 100%;
   height: 100%;
   box-sizing: border-box;
 }
 
-.layout [data-region='main'] >:last-child {
+.layout [data-region='main']>:last-child {
   min-width: auto;
 }
 
-.layout [data-region='main'] > [data-component="contact-section-1"] {
+.layout [data-region='main']>:first-child {
   min-width: auto;
+}
+
+.layout [data-region='main']>[data-component="contact-section-1"] {
+  min-width: auto;
+}
+
+/* Scroll to zero button functionality */
+.layout [data-region='main'] [layout-utility="scroll-to-zero"] {
+  opacity: var(--show-scroll-to-zero, 0);
+  pointer-events: none;
+  position: sticky;
+  left: 2rem;
+  top: calc(100% - 42px - 0.8rem);
+  height: 2.3rem;
+  width: 2.3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.layout [data-region='main'] [layout-utility="scroll-to-zero"] {
+  opacity: var(--scroll-to-zero-visible, 0);
+  pointer-events: auto;
+}
+
+.layout [data-region='main'] [layout-utility="scroll-to-zero"] svg {
+  width: 5rem;
+  height: 5rem;
+  stroke-width: 2;
+}
+
+.layout [data-region='main'] [layout-utility="scroll-to-zero"]:hover {
+  background: var(--color-accent);
+  opacity: 0.9;
+  color: var(--color-background);
+  border-color: var(--text-color);
+}
+
+.layout [data-region='main'] [layout-utility="scroll-to-zero"]:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }

@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { useStyle } from '@context/global/style-context';
 import Layout from '@layout/core.layout';
 import Header from '@component/common/header';
@@ -11,6 +11,7 @@ import ContactPage from '@pages/contact';
 
 export default function App() {
   const { styleId } = useStyle();
+  const location = useLocation();
 
   // Slot content is assembled here. Layout itself resolves which style's
   // layout to mount internally (see layout/core.layout.tsx) - App only
@@ -23,7 +24,7 @@ export default function App() {
   };
 
   return (
-    <Layout slots={slots}>
+    <Layout pageKey={location.pathname} slots={slots}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/projects" element={<ProjectsPage />} />
