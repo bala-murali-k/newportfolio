@@ -4,6 +4,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { IconProp } from '@fortawesome/fontawesome-svg-core';
 import type { ContactChannel } from '@content/contact';
+import { useMousePosition } from '@/utils/hooks/common/mouse.position';
 
 export interface ChannelsV1Props {
   channels: ContactChannel[];
@@ -32,11 +33,7 @@ const getIcon = (platform: string): IconProp => {
 
 export default function ChannelsV1({ channels }: ChannelsV1Props) {
   const [hoveredIndex, setHoveredIndex] = useState<string | number | null>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    setMousePos({ x: e.clientX, y: e.clientY });
-  };
+  const mousePos = useMousePosition()
 
   return (
     <div data-component="contact-channels">
@@ -47,7 +44,6 @@ export default function ChannelsV1({ channels }: ChannelsV1Props) {
             key={number}
             onMouseEnter={() => setHoveredIndex(number)}
             onMouseLeave={() => setHoveredIndex(null)}
-            onMouseMove={handleMouseMove}
           >
             <a
               href={href}

@@ -8,6 +8,8 @@ import HomePage from '@pages/home';
 import ProjectsPage from '@pages/projects';
 import AboutPage from '@pages/about';
 import ContactPage from '@pages/contact';
+import { useEffect } from 'react';
+import { setMousePosition } from './utils/hooks/common/mouse.position';
 
 export default function App() {
   const { styleId } = useStyle();
@@ -22,6 +24,18 @@ export default function App() {
     footer: <Footer />,
     ...(styleId === 'minimal' ? { sidebar: <Sidebar /> } : {}),
   };
+
+  useEffect(() => {
+  const handleMouseMove = (e: MouseEvent) => {
+    setMousePosition(e.clientX, e.clientY);
+  };
+
+  window.addEventListener('mousemove', handleMouseMove);
+
+  return () => {
+    window.removeEventListener('mousemove', handleMouseMove);
+  };
+}, []);
 
   return (
     <Layout pageKey={location.pathname} slots={slots}>

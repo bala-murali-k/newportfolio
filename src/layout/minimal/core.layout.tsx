@@ -1,10 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import Slot from './slot';
 import styles from './core.layout.module.css';
 import { CoreLayoutProps } from '../core.layout';
 import { subscribeToMinimalScroll } from '@/utils/hooks/minimal/use.minimal.scroll';
 import { ArrowLeft } from 'lucide-react';
+import { useMousePosition } from '@/utils/hooks/common/mouse.position';
 
 /**
  * Minimal's layout: header, sidebar, and footer are fixed chrome - they
@@ -17,7 +18,8 @@ import { ArrowLeft } from 'lucide-react';
  */
 export default function CoreLayout({ pageKey, slots = {}, children }: CoreLayoutProps) {
   const mainRef = useRef<HTMLElement>(null);
-
+  const mousePos = useMousePosition()
+  const [isScrollToZeroHovered, setIsScrollToZeroHovered] = useState(false);
   function resetScroll() {
     const main = mainRef.current;
     if (!main) return;
@@ -72,25 +74,14 @@ export default function CoreLayout({ pageKey, slots = {}, children }: CoreLayout
   }, []);
 
   useEffect(() => {
-    return subscribeToMinimalScroll(
-      ({ percent, behavior }) => {
-        const main = mainRef.current;
+    return subscribeToMinimalScroll(({ percent, behavior }) => {
+      const main = mainRef.current
+      if (!main) return;
+      const maxScroll = main.scrollWidth - main.clientWidth;
+      const clampedPercent = Math.max(0, Math.min(percent, 100));
 
-        if (!main) return;
-
-        const maxScroll =
-          main.scrollWidth - main.clientWidth;
-
-        const clampedPercent = Math.max(
-          0,
-          Math.min(percent, 100)
-        );
-
-        main.scrollTo({
-          left: maxScroll * (clampedPercent / 100),
-          behavior,
-        });
-      }
+      main.scrollTo({ left: maxScroll * (clampedPercent / 100), behavior, });
+    }
     );
   }, []);
 
@@ -103,11 +94,30 @@ export default function CoreLayout({ pageKey, slots = {}, children }: CoreLayout
       <Slot name="header" data-region="header">{slots.header}</Slot>
       <Slot name="sidebar" data-region="sidebar">{slots.sidebar}</Slot>
       <main ref={mainRef} data-region="main">
-        <button onClick={(event) => { event.preventDefault(), resetScroll() }} layout-utility="scroll-to-zero"><ArrowLeft /></button>
+        <button
+          onClick={(event) => { event.preventDefault(), resetScroll() }}
+          onMouseEnter={() => setIsScrollToZeroHovered(true)}
+          onMouseLeave={() => setIsScrollToZeroHovered(false)}
+          layout-utility="scroll-to-zero"
+        >
+          <ArrowLeft />
+        </button>
         {children}
       </main>
       <div className="scroll-progress" data-region="scroll-progress"></div>
       <Slot name="footer" data-region="footer">{slots.footer}</Slot>
+      {isScrollToZeroHovered && (
+        <div
+          data-layout-tooltip
+          data-visible="true"
+          style={{
+            left: `${mousePos.x + 12}px`,
+            top: `${mousePos.y + 12}px`,
+          }}
+        >
+          Scroll to Left.
+        </div>
+      )}
     </div>
   );
 }

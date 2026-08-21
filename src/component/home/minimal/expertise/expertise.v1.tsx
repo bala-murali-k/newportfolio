@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useMousePosition } from '@/utils/hooks/common/mouse.position';
 
 interface ExpertiseItem {
   number: string;
@@ -13,11 +14,7 @@ interface ExpertiseProps {
 
 export default function ExpertiseV1({ content }: ExpertiseProps) {
   const [hoveredIndex, setHoveredIndex] = useState<string | number | null>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    setMousePos({ x: e.clientX, y: e.clientY });
-  };
+  const mousePos = useMousePosition();
 
   return (
     <div data-component="expertise">
@@ -29,7 +26,6 @@ export default function ExpertiseV1({ content }: ExpertiseProps) {
               key={item.number}
               onMouseEnter={() => setHoveredIndex(item.number)}
               onMouseLeave={() => setHoveredIndex(null)}
-              onMouseMove={handleMouseMove}
             >
               <div data-heading>
                 <span data-index>{item.number}</span>
