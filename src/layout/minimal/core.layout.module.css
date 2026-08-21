@@ -131,3 +131,12 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+.layout [data-region='main'] [data-utility-component='scroll-group'] {
+  position: sticky;
+  left: calc(100% - 6rem);
+  align-self: flex-end;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  z-index: 20;
+}

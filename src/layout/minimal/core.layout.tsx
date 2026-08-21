@@ -106,18 +106,20 @@ export default function CoreLayout({ pageKey, slots = {}, children }: CoreLayout
       </main>
       <div className="scroll-progress" data-region="scroll-progress"></div>
       <Slot name="footer" data-region="footer">{slots.footer}</Slot>
-      {isScrollToZeroHovered && (
-        <div
-          data-layout-tooltip
-          data-visible="true"
-          style={{
-            left: `${mousePos.x + 12}px`,
-            top: `${mousePos.y + 12}px`,
-          }}
-        >
-          Scroll to Left.
-        </div>
-      )}
+      {
+        isScrollToZeroHovered && (
+          <div
+            data-layout-tooltip
+            data-visible="true"
+            style={{
+              left: `${mousePos.x + 12}px`,
+              top: `${mousePos.y + 12}px`,
+            }}
+          >
+            Scroll to Left.
+          </div>
+        )
+      }
     </div>
   );
 }

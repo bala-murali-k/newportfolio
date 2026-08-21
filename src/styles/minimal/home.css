@@ -510,3 +510,53 @@
     line-height: 0.75;
     color: var(--color-accent);
 }
+
+/* Scroll behaviour controls */
+[data-style='minimal'] [data-component='hero'] [data-utility-component='scroll-group'] {
+  position: absolute;
+
+  right: 2rem;
+  bottom: 2rem;
+
+  display: flex;
+  gap: 0.75rem;
+
+  z-index: 20;
+}
+
+/* Buttons inside the scroll group mirror the layout's scroll-to-zero
+   utility button (see layout/minimal/core.layout.module.css) so both
+   controls look and behave the same. */
+[data-style='minimal'] [data-component='hero'] [data-utility-component='scroll-group'] button {
+  opacity: 1;
+  pointer-events: auto;
+  height: 2.3rem;
+  width: 2.3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  cursor: pointer;
+  transition: opacity 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+[data-style='minimal'] [data-component='hero'] [data-utility-component='scroll-group'] button svg {
+  width: 5rem;
+  height: 5rem;
+  stroke-width: 2;
+}
+
+[data-style='minimal'] [data-component='hero'] [data-utility-component='scroll-group'] button:hover {
+  background: var(--color-accent);
+  opacity: 0.9;
+  color: var(--color-background);
+  border-color: var(--text-color);
+}
+
+[data-style='minimal'] [data-component='hero'] [data-utility-component='scroll-group'] button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
