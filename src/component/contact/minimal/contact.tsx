@@ -43,10 +43,10 @@ export default function CoreContact() {
       <section data-component="contact-section-2">
         <HeroV1 />
       </section>
-      <section data-component="contact-section-2">
+      <section data-component="contact-section-3">
         <Form values={values} labels={contactContent.labels} onChange={handleChange} onSubmit={handleSubmit} />
       </section>
-      <section data-component="contact-section-3">
+      <section data-component="contact-section-4">
         <FinisherV1 />
       </section>
     </>
