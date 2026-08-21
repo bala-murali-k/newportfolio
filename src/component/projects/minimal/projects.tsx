@@ -1,5 +1,4 @@
 import { useStyle } from '@context/global/style-context';
-import List from './list';
 import { getProjectsContent } from '@content/projects';
 
 export default function CoreProjects() {
@@ -9,7 +8,18 @@ export default function CoreProjects() {
   return (
     <section data-component="core.projects">
       <h1>Projects</h1>
-      <List projects={projects} />
+      <ul>
+        {projects.map((project) => (
+          <li key={project.id}>
+            <h2>{project.title}</h2>
+            <p>{project.description}</p>
+            <p>{project.tags.join(', ')}</p>
+            <a href={project.link} target="_blank" rel="noreferrer">
+              View
+            </a>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

@@ -1,5 +1,30 @@
 import type { Project } from '../projects.content';
 
+interface TechStack {
+  index: number,
+  stack: string[],
+  stackExpert: number[]
+}
+
+export interface MinimalProject extends Project {
+  techStack: TechStack[],
+  status: "Completed" | "Ongoing" | "Abandoned";
+  isOneVersion: boolean,
+  featured: boolean,
+  version: number,
+  year: number,
+  isHosted: boolean,
+  isImageAvailable: boolean,
+  isCodePublic: boolean,
+  versions: MinimalProject[] | null,
+  hostedLink: string | null,
+  imageType: "Link" | "Local" | null,
+  imageSource: string | null,
+  imageAltText: string | null,
+  publicCodeLink: string | null,
+  publicCodeSource: string | null,
+}
+
 export const projectsContent: Project[] = [
   {
     id: 'project-one',
