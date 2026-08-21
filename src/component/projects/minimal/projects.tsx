@@ -6,19 +6,23 @@ export default function CoreProjects() {
   const projects = getProjectsContent(styleId);
 
   return (
-    <section data-component="core.projects">
-      <h1>Projects</h1>
+    <section data-component="projects-component">
+      <div data-component="project-deco">
+        <h1>Projects</h1>
+      </div>
       <ul>
-        {projects.map((project) => (
-          <li key={project.id}>
-            <h2>{project.title}</h2>
-            <p>{project.description}</p>
-            <p>{project.tags.join(', ')}</p>
-            <a href={project.link} target="_blank" rel="noreferrer">
-              View
-            </a>
-          </li>
-        ))}
+        {
+          projects.map((project) => (
+            <li key={project.id}>
+              <h2>{project.title}</h2>
+              <p>{project.description}</p>
+              <p>{project.tags.join(', ')}</p>
+              <a href={project.link} target="_blank" rel="noreferrer">
+                View
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </section>
   );

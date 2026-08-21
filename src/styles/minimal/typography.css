@@ -95,3 +95,11 @@
 [data-style='minimal'] [data-component="contact-hero"] {
    font-family: var(--font-header, 'Stack Sans Headline', sans-serif);
 }
+
+[data-style='minimal'] [data-component='projects-component'] [data-component='project-deco'] h1 {
+   font-family: var(--font-header, 'Mozilla Headline', sans-serif);
+}
+
+[data-style='minimal'] [data-component='projects-component'] p {
+   font-family: var(--font-header, 'Stack Sans Headline', sans-serif);
+}

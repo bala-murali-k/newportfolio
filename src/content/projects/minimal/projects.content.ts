@@ -7,16 +7,16 @@ interface TechStack {
 }
 
 export interface MinimalProject extends Project {
-  techStack: TechStack[],
+  techStack: TechStack[] | [],
   status: "Completed" | "Ongoing" | "Abandoned";
   isOneVersion: boolean,
   featured: boolean,
-  version: number,
+  version: string,
   year: number,
   isHosted: boolean,
   isImageAvailable: boolean,
   isCodePublic: boolean,
-  versions: MinimalProject[] | null,
+  versions: MinimalProject[] | [],
   hostedLink: string | null,
   imageType: "Link" | "Local" | null,
   imageSource: string | null,
@@ -25,19 +25,28 @@ export interface MinimalProject extends Project {
   publicCodeSource: string | null,
 }
 
-export const projectsContent: Project[] = [
+export const projectsContent: MinimalProject[] = [
   {
-    id: 'project-one',
-    title: 'Project One',
+    id: '1',
+    title: 'This Portfolio',
     description: 'One line. That is all it needs.',
-    tags: ['React'],
+    tags: [],
     link: 'https://example.com',
-  },
-  {
-    id: 'project-two',
-    title: 'Project Two',
-    description: 'Another line.',
-    tags: ['Vite'],
-    link: 'https://example.com',
-  },
+    techStack: [],
+    status: "Ongoing",
+    isOneVersion: false,
+    featured: true,
+    version: '2.0.0',
+    year: 2026,
+    isHosted: false,
+    isImageAvailable: true,
+    isCodePublic: false,
+    versions: [],
+    hostedLink: null,
+    imageType: 'Local',
+    imageSource: 'Local',
+    imageAltText: 'Home page screenshot',
+    publicCodeLink: null,
+    publicCodeSource: null
+  }
 ];
