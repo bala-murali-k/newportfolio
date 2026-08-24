@@ -427,3 +427,117 @@
   color: var(--color-accent);
   text-align: right;
 }
+
+/* ===================================================
+   PROJECT BODY FEATURES & ARCHITECTURE TRANSITIONS
+   =================================================== */
+
+/* ===================================================
+   FLUID CONTAINER FILLS (FEATURES & ARCHITECTURE)
+   =================================================== */
+
+/* Allow project-body to stretch children to 100% available area */
+[data-style='minimal'] [data-component='projects-component'] li[data-active-view='features'] [data-component-section='project-body'],
+[data-style='minimal'] [data-component='projects-component'] li[data-active-view='architecture'] [data-component-section='project-body'] {
+    align-items: stretch;
+    justify-content: flex-start;
+    padding-bottom: 2rem;
+}
+
+/* 1. Features Wrapper: Takes all available body space and handles fluid scroll */
+[data-style='minimal'] [data-features-wrapper] {
+    flex: 1 1 0%;
+    min-height: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 1.5rem;
+    animation: fadeInSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border, rgba(125, 125, 125, 0.3)) transparent;
+}
+
+[data-style='minimal'] [data-features-list] {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 100%;
+}
+
+[data-style='minimal'] [data-features-list] [data-feature-item] {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+[data-style='minimal'] [data-feature-index] {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--color-accent);
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+    padding-top: 0.15rem;
+    flex-shrink: 0;
+}
+
+[data-style='minimal'] [data-feature-item] p {
+    margin: 0;
+    padding: 0;
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.55;
+    letter-spacing: 0.02em;
+    color: var(--color-foreground);
+    opacity: 0.85;
+    width: 100%;
+    word-break: break-word;
+}
+
+/* 2. Architecture Wrapper: Fills entire space and contains image fluidly */
+[data-style='minimal'] [data-architecture-wrapper] {
+    flex: 1 1 0%;
+    min-height: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    animation: fadeInSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+[data-style='minimal'] [data-architecture-wrapper] img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 0.4rem;
+    border: 1px solid var(--color-border, rgba(125, 125, 125, 0.2));
+}
+
+[data-style='minimal'] [data-empty-notice] {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.45;
+}
+
+/* Smooth Entrance Keyframe */
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

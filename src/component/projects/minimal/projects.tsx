@@ -8,6 +8,7 @@ import { truncate } from '@/utils/functions/common.helper.functions';
 const MAX_DESCRIPTION_CHARS = 150;
 
 type TooltipType = 'version' | 'features' | 'architecture' | 'description' | 'image';
+type ActiveView = 'preview' | 'features' | 'architecture';
 
 interface ProjectCardProps {
   initialProject: MinimalProject;
@@ -20,6 +21,8 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
   }, [initialProject]);
 
   const [activeIndex, setActiveIndex] = useState(allVersions.length - 1);
+  const [activeView, setActiveView] = useState<ActiveView>('preview');
+
   const currentProject = allVersions[activeIndex];
 
   const [tooltipContent, setTooltipContent] = useState<ReactNode | null>(null);
@@ -40,26 +43,29 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
     setTooltipContent(null);
   };
 
+  const toggleView = (view: ActiveView) => {
+    setActiveView((prev) => (prev === view ? 'preview' : view));
+  };
+
   const hasLowerVersion = activeIndex > 0;
   const hasHigherVersion = activeIndex < allVersions.length - 1;
   const allVersionsText = allVersions.map((v) => `v${v.version}`).join(', ');
 
-  // Northwest (top-left) offset for image hover, standard Southeast for other elements
   const tooltipStyle =
     tooltipType === 'image'
       ? {
-          left: `${mousePos.x - 14}px`,
-          top: `${mousePos.y - 14}px`,
-          transform: 'translate(-100%, -100%)',
-        }
+        left: `${mousePos.x - 14}px`,
+        top: `${mousePos.y - 14}px`,
+        transform: 'translate(-100%, -100%)',
+      }
       : {
-          left: `${mousePos.x + 14}px`,
-          top: `${mousePos.y + 14}px`,
-          transform: 'none',
-        };
+        left: `${mousePos.x + 14}px`,
+        top: `${mousePos.y + 14}px`,
+        transform: 'none',
+      };
 
   return (
-    <li onMouseMove={handleMouseMove}>
+    <li onMouseMove={handleMouseMove} data-active-view={activeView}>
       <div data-component-section="project-meta">
         <h2>{currentProject.title}</h2>
         <div data-component-section="project-meta-helper">
@@ -75,7 +81,6 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
               <ChevronsLeft />
             </button>
 
-            {/* Version Text Hover */}
             <span
               data-hoverable-text
               onMouseEnter={() =>
@@ -101,26 +106,39 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
             </button>
           </div>
 
-          {/* Features Button Hover */}
+          {/* Features Button Trigger */}
           <button
             type="button"
-            onMouseEnter={() => handleMouseEnter('features', 'Click to see features')}
+            data-active={activeView === 'features'}
+            onClick={() => toggleView('features')}
+            onMouseEnter={() =>
+              handleMouseEnter(
+                'features',
+                activeView === 'features' ? 'Click to show preview' : 'Click to see features'
+              )
+            }
             onMouseLeave={handleMouseLeave}
           >
             features
           </button>
 
-          {/* Architecture Button Hover */}
+          {/* Architecture Button Trigger */}
           <button
             type="button"
-            onMouseEnter={() => handleMouseEnter('architecture', 'Click to see architecture')}
+            data-active={activeView === 'architecture'}
+            onClick={() => toggleView('architecture')}
+            onMouseEnter={() =>
+              handleMouseEnter(
+                'architecture',
+                activeView === 'architecture' ? 'Click to show preview' : 'Click to see architecture'
+              )
+            }
             onMouseLeave={handleMouseLeave}
           >
             architecture
           </button>
         </div>
 
-        {/* Description Hover */}
         <p
           data-hoverable-desc
           onMouseEnter={() =>
@@ -140,53 +158,84 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
       </div>
 
       <div data-component-section="project-body">
-        {/* Image Preview Hover */}
-        <div
-          data-preview-box
-          onMouseEnter={() =>
-            handleMouseEnter(
-              'image',
-              <div data-tooltip-chart>
-                {/* <span data-tooltip-label>Tech Stack Expertise</span> */}
-                {currentProject.techStack && currentProject.techStack.length > 0 ? (
-                  <div data-chart-list>
-                    {currentProject.techStack.map((item) => (
-                      <div key={item.index} data-chart-row>
-                        <span data-stack-name>{item.stack}</span>
-                        <div data-bar-track>
-                          <div
-                            data-bar-fill
-                            style={{ width: `${item.stackExpert}%` }}
-                          />
-                        </div>
-                        <span data-stack-value>{item.stackExpert}%</span>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <span>No tech stack specified</span>
-                )}
-              </div>
-            )
-          }
-          onMouseLeave={handleMouseLeave}
-        >
-          {currentProject.imageSource && currentProject.isImageAvailable ? (
-            <img
-              src={currentProject.imageSource}
-              alt={currentProject.imageAltText || `${currentProject.title} screenshot`}
-            />
-          ) : (
-            <p>{currentProject.title}</p>
-          )}
-        </div>
+        {/* Features Content View */}
+        {activeView === 'features' && (
+          <div data-features-wrapper>
+            {currentProject.featuresList && currentProject.featuresList.length > 0 ? (
+              <ul data-features-list>
+                {currentProject.featuresList.map((feature, idx) => (
+                  <li key={idx} data-feature-item>
+                    <span data-feature-index>{String(idx + 1).padStart(2, '0')}</span>
+                    <p>{feature}</p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p data-empty-notice>No feature specifications documented for this release.</p>
+            )}
+          </div>
+        )}
 
-        <a href={currentProject.link} target="_blank" rel="noreferrer">
-          Explore <MoveUpRight />
-        </a>
+        {/* Architecture Content View */}
+        {activeView === 'architecture' && (
+          <div data-architecture-wrapper>
+            {currentProject.architectureList ? (
+              <img src={currentProject.architectureList} alt={`${currentProject.title} architecture`} />
+            ) : (
+              <p data-empty-notice>No architecture blueprint available.</p>
+            )}
+          </div>
+        )}
+
+        {/* Standard Media Preview View */}
+        {activeView === 'preview' && (
+          <>
+            <div
+              data-preview-box
+              onMouseEnter={() =>
+                handleMouseEnter(
+                  'image',
+                  <div data-tooltip-chart>
+                    {currentProject.techStack && currentProject.techStack.length > 0 ? (
+                      <div data-chart-list>
+                        {currentProject.techStack.map((item) => (
+                          <div key={item.index} data-chart-row>
+                            <span data-stack-name>{item.stack}</span>
+                            <div data-bar-track>
+                              <div
+                                data-bar-fill
+                                style={{ width: `${item.stackExpert}%` }}
+                              />
+                            </div>
+                            <span data-stack-value>{item.stackExpert}%</span>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <span>No tech stack specified</span>
+                    )}
+                  </div>
+                )
+              }
+              onMouseLeave={handleMouseLeave}
+            >
+              {currentProject.imageSource && currentProject.isImageAvailable ? (
+                <img
+                  src={currentProject.imageSource}
+                  alt={currentProject.imageAltText || `${currentProject.title} screenshot`}
+                />
+              ) : (
+                <p>{currentProject.title}</p>
+              )}
+            </div>
+
+            <a href={currentProject.link} target="_blank" rel="noreferrer">
+              Explore <MoveUpRight />
+            </a>
+          </>
+        )}
       </div>
 
-      {/* Floating Cursor Tooltip */}
       {tooltipContent && tooltipType && (
         <div
           data-tooltip
