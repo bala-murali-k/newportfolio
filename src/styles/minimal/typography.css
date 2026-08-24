@@ -2,7 +2,7 @@
    Wired up via the style's index.css - still empty on purpose until
    real rules are needed.
    This is the reserved home for font-family, sizes, weights, line-height. */
-   
+
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+80s+Fade&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bitcount+Single&display=swap');
@@ -32,7 +32,7 @@
    font-family: var(--font-hero, 'Monoton', cursive, sans-serif);
 }
 
-[data-style='minimal'] [data-component='hero'] div div > p {
+[data-style='minimal'] [data-component='hero'] div div>p {
    font-family: var(--font-hero, 'Stack Sans Headline', cursive, sans-serif);
 }
 
@@ -110,4 +110,25 @@
 
 [data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] p {
    font-family: var(--font-hero, 'Stack Sans Headline', cursive, sans-serif);
+}
+
+[data-style='minimal'] [data-tooltip] [data-tooltip-type='version'] {
+   font-family: var(--font-header, 'Syncopate', sans-serif);
+}
+
+[data-style='minimal'] [data-tooltip][data-tooltip-type='description'] [data-tooltip-details] {
+   font-family: var(--font-header, 'Mozilla Headline', sans-serif);
+}
+
+[data-style='minimal'] [data-tooltip][data-tooltip-type='features'],
+[data-style='minimal'] [data-tooltip][data-tooltip-type='architecture'] {
+   font-family: var(--font-hero, 'Mozilla Headline', cursive, sans-serif);
+}
+
+[data-style='minimal'] [data-tooltip][data-tooltip-type='version'] [data-tooltip-label] {
+   font-family: var(--font-hero, 'Mozilla Headline', cursive, sans-serif);
+}
+
+[data-style='minimal'] [data-tooltip][data-tooltip-type='image'] [data-stack-name] {
+   font-family: var(--font-hero, 'Mozilla Headline', cursive, sans-serif);
 }

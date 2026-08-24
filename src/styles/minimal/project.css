@@ -35,6 +35,7 @@
     container-type: size;
 }
 
+/* Project list style */
 [data-style='minimal'] [data-component='projects-component'] ul {
     display: flex;
     margin: 0;
@@ -64,10 +65,11 @@
 
 [data-style='minimal'] [data-component='projects-component'] li [data-component-section='project-meta'] {
     height: max-content;
-}
-
-[data-style='minimal'] [data-component='projects-component'] li [data-component-section='project-meta'] {
     padding: 0 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: inherit;
 }
 
 [data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] p {
@@ -148,4 +150,280 @@
     color: var(--color-foreground);
     border-radius: 0.5rem;
     margin-top: 0.5rem;
+}
+
+/* Metadata helper button styles */
+/* Helper container alignment */
+[data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] [data-component-section='project-meta-helper'] {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+/* Base text buttons (Tags / Mode Switchers) */
+[data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] [data-component-section='project-meta-helper'] button {
+  background: transparent;
+  border: none;
+  padding: 0.2rem 0;
+  color: var(--color-foreground);
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0.45;
+  position: relative;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+[data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] [data-component-section='project-meta-helper'] button:hover {
+  opacity: 0.9;
+  color: var(--color-accent);
+}
+
+[data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] [data-component-section='project-meta-helper'] button[data-active='true'] {
+  opacity: 1;
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+/* Minimal subtle underline anchor for active state */
+[data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] [data-component-section='project-meta-helper'] button[data-active='true']::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-accent);
+}
+
+/* Version segmented group container */
+[data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] [data-component-section='project-meta-helper'] [data-component-section='project-meta-version'] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Slash divider between version buttons */
+[data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] [data-component-section='project-meta-helper'] [data-component-section='project-meta-version'] button:not(:last-child)::after {
+  content: '/';
+  margin-left: 0.4rem;
+  color: var(--color-border, rgba(125, 125, 125, 0.3));
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Borderless Version/Icon Buttons */
+[data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] [data-component-section='project-meta-helper'] [data-component-section='project-meta-version'] button {
+  width: auto;
+  height: auto;
+  padding: 0.15rem 0.25rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: var(--color-foreground);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  opacity: 0.4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+/* Version button SVG formatting */
+[data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] [data-component-section='project-meta-helper'] [data-component-section='project-meta-version'] button svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  stroke-width: 1.25;
+  transition: transform 0.2s ease;
+}
+
+/* Hover State */
+[data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] [data-component-section='project-meta-helper'] [data-component-section='project-meta-version'] button:hover {
+  opacity: 0.85;
+  color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+[data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] [data-component-section='project-meta-helper'] [data-component-section='project-meta-version'] button:hover svg {
+  transform: scale(1.15);
+}
+
+/* Active Click State */
+[data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] [data-component-section='project-meta-helper'] [data-component-section='project-meta-version'] button:active {
+  transform: translateY(0);
+}
+
+/* Selected Version State */
+[data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] [data-component-section='project-meta-helper'] [data-component-section='project-meta-version'] button[data-active='true'] {
+  opacity: 1;
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+/* Accessible Focus Ring */
+[data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] [data-component-section='project-meta-helper'] button:focus-visible,
+[data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] [data-component-section='project-meta-helper'] [data-component-section='project-meta-version'] button:focus-visible {
+  outline: 1px dotted var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Tooltip styles */
+/* ===================================================
+   FLOATING MOUSE TOOLTIP (MINIMAL THEME)
+   =================================================== */
+
+/* Base Floating Container with max-width and wrapping boundary */
+[data-style='minimal'] [data-tooltip] {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+  line-height: 0.95;
+  user-select: none;
+  color: var(--color-foreground);
+  max-width: min(80vw, 42rem);
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* ---------------------------------------------------
+   SPECIFIC HOVER TOOLTIP TYPES (LARGE SCALE)
+   --------------------------------------------------- */
+
+/* 1. Features & Architecture Action Prompts */
+[data-style='minimal'] [data-tooltip][data-tooltip-type='features'],
+[data-style='minimal'] [data-tooltip][data-tooltip-type='architecture'] {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 100;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  max-width: min(70vw, 36rem);
+}
+
+/* 2. Version Text Tooltip */
+[data-style='minimal'] [data-tooltip][data-tooltip-type='version'] {
+  max-width: min(75vw, 38rem);
+}
+
+[data-style='minimal'] [data-tooltip][data-tooltip-type='version'] [data-tooltip-label] {
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-foreground);
+  opacity: 0.45;
+  margin-bottom: -0.5rem;
+}
+
+[data-style='minimal'] [data-tooltip][data-tooltip-type='version'] span:not([data-tooltip-label]) {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: bolder;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  color: var(--color-accent);
+  line-height: 1.1;
+}
+
+/* 3. Description Tooltip (Quick Specs / Meta Details) */
+[data-style='minimal'] [data-tooltip][data-tooltip-type='description'] {
+  max-width: min(75vw, 36rem);
+}
+
+[data-style='minimal'] [data-tooltip][data-tooltip-type='description'] [data-tooltip-details] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: clamp(1.4rem, 3.5vw, 2.5rem);
+  font-weight: bold;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+[data-style='minimal'] [data-tooltip][data-tooltip-type='description'] [data-tooltip-details] strong {
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-foreground);
+  opacity: 0.45;
+  margin-right: 0.75rem;
+  display: inline-block;
+}
+
+[data-style='minimal'] [data-tooltip][data-tooltip-type='description'] [data-tooltip-details] div {
+  color: var(--color-accent);
+}
+
+/* 4. Image Tech Stack Chart Tooltip */
+[data-style='minimal'] [data-tooltip][data-tooltip-type='image'] {
+  width: min(85vw, 34rem);
+  max-width: 34rem;
+  pointer-events: none;
+}
+
+[data-style='minimal'] [data-tooltip][data-tooltip-type='image'] [data-tooltip-label] {
+  font-size: 1rem;
+  font-weight: bolder;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-foreground);
+  opacity: 0.45;
+  margin-bottom: 0.5rem;
+}
+
+[data-style='minimal'] [data-tooltip][data-tooltip-type='image'] [data-chart-list] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+[data-style='minimal'] [data-tooltip][data-tooltip-type='image'] [data-chart-row] {
+  display: grid;
+  grid-template-columns: minmax(5rem, 8rem) 1fr 4.5rem;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+[data-style='minimal'] [data-tooltip][data-tooltip-type='image'] [data-stack-name] {
+  font-size: clamp(1.1rem, 2.2vw, 1.8rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  color: var(--color-accent);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[data-style='minimal'] [data-tooltip][data-tooltip-type='image'] [data-bar-track] {
+  height: 6px;
+  background-color: var(--color-border, rgba(125, 125, 125, 0.2));
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+[data-style='minimal'] [data-tooltip][data-tooltip-type='image'] [data-bar-fill] {
+  height: 100%;
+  background-color: var(--color-accent);
+  border-radius: 3px;
+}
+
+[data-style='minimal'] [data-tooltip][data-tooltip-type='image'] [data-stack-value] {
+  font-size: clamp(1.1rem, 2.2vw, 1.8rem);
+  font-weight: 200;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-accent);
+  text-align: right;
 }
