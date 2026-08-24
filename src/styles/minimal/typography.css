@@ -101,5 +101,13 @@
 }
 
 [data-style='minimal'] [data-component='projects-component'] p {
-   font-family: var(--font-header, 'Stack Sans Headline', sans-serif);
+   font-family: var(--font-header, 'Julius Sans One', sans-serif);
+}
+
+[data-style='minimal'] [data-component='projects-component'] ul li h2 {
+   font-family: var(--font-header, 'Syncopate', sans-serif);
+}
+
+[data-style='minimal'] [data-component='projects-component'] ul li [data-component-section='project-meta'] p {
+   font-family: var(--font-hero, 'Stack Sans Headline', cursive, sans-serif);
 }

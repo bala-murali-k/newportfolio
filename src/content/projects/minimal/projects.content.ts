@@ -2,8 +2,8 @@ import type { Project } from '../projects.content';
 
 interface TechStack {
   index: number,
-  stack: string[],
-  stackExpert: number[]
+  stack: string,
+  stackExpert: number
 }
 
 export interface MinimalProject extends Project {
@@ -29,6 +29,29 @@ export const projectsContent: MinimalProject[] = [
   {
     id: '1',
     title: 'This Portfolio',
+    description: 'Portfolio designed with strict separation of concerns, ensuring maintainable architecture, reusable components, scalable systems, and consistent user experiences.',
+    tags: [],
+    link: 'https://example.com',
+    techStack: [],
+    status: "Ongoing",
+    isOneVersion: false,
+    featured: true,
+    version: '2.0.0',
+    year: 2026,
+    isHosted: false,
+    isImageAvailable: true,
+    isCodePublic: false,
+    versions: [],
+    hostedLink: null,
+    imageType: 'Local',
+    imageSource: '/images/projects/portfolio_v2_ss.png',
+    imageAltText: 'Home page screenshot',
+    publicCodeLink: null,
+    publicCodeSource: null
+  },
+  {
+    id: '1',
+    title: 'This Portfolio',
     description: 'One line. That is all it needs.',
     tags: [],
     link: 'https://example.com',
@@ -44,7 +67,7 @@ export const projectsContent: MinimalProject[] = [
     versions: [],
     hostedLink: null,
     imageType: 'Local',
-    imageSource: 'Local',
+    imageSource: '/images/projects/portfolio_v2_ss.png',
     imageAltText: 'Home page screenshot',
     publicCodeLink: null,
     publicCodeSource: null
