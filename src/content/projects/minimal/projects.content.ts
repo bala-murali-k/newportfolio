@@ -92,7 +92,7 @@ export const projectsContent: MinimalProject[] = [
       "Desktop layout mechanics adapt cleanly to native scrolling and responsive fallback containers for mobile screens.",
       "Built with React, Vite, and TypeScript using a Core + Swappable-Children pattern and data-attribute styling isolation."
     ],
-    architectureList: '/images/projects/portfolio_v1_ss.png',
+    architectureList: '/images/projects/Portfolio-Architecture-Image.png',
     hostedLink: null,
     imageType: 'Local',
     imageSource: '/images/projects/portfolio_v2_ss.png',
