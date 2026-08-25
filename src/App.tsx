@@ -8,6 +8,7 @@ import HomePage from '@pages/home';
 import ProjectsPage from '@pages/projects';
 import AboutPage from '@pages/about';
 import ContactPage from '@pages/contact';
+import CoreNotFound from './component/404';
 import { useEffect } from 'react';
 import { setMousePosition } from './utils/hooks/common/mouse.position';
 
@@ -44,6 +45,7 @@ export default function App() {
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="*" element={<CoreNotFound />} />
       </Routes>
     </Layout>
   );

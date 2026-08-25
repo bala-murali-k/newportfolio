@@ -52,7 +52,7 @@
 }
 
 [data-style='minimal'] [data-component='projects-component'] li:first-child {
-    width: calc(var(--minimal-content-width) - 14cqh);
+    width: calc(var(--minimal-content-width) - 12cqh);
 }
 
 [data-style='minimal'] [data-component='projects-component'] li h2 {
