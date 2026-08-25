@@ -4,6 +4,7 @@ import { getProjectsContent } from '@content/projects';
 import type { MinimalProject } from '@/content/projects/minimal/projects.content';
 import { ChevronsLeft, ChevronsRight, MoveUpRight } from 'lucide-react';
 import { truncate } from '@/utils/functions/common.helper.functions';
+import ProjectPreviewDrawer from '@/component/common/support/explore.demo.support.component';
 
 const MAX_DESCRIPTION_CHARS = 150;
 
@@ -22,6 +23,7 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
 
   const [activeIndex, setActiveIndex] = useState(allVersions.length - 1);
   const [activeView, setActiveView] = useState<ActiveView>('preview');
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const currentProject = allVersions[activeIndex];
 
@@ -63,6 +65,8 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
         top: `${mousePos.y + 14}px`,
         transform: 'none',
       };
+
+  const previewLink = currentProject.link || currentProject.hostedLink || null;
 
   return (
     <li onMouseMove={handleMouseMove} data-active-view={activeView}>
@@ -229,13 +233,19 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
               )}
             </div>
 
-            <a href={currentProject.link} target="_blank" rel="noreferrer">
+            {/* Explore Drawer Trigger */}
+            <a
+              type="button"
+              data-cta-btn
+              onClick={() => setIsDrawerOpen(true)}
+            >
               Explore <MoveUpRight />
             </a>
           </>
         )}
       </div>
 
+      {/* Floating Cursor Tooltip */}
       {tooltipContent && tooltipType && (
         <div
           data-tooltip
@@ -245,6 +255,16 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
           {tooltipContent}
         </div>
       )}
+
+      {/* Standalone Live Support Drawer */}
+      <ProjectPreviewDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        title={currentProject.title}
+        url={previewLink}
+        anchor="bottom"
+        height="95vh"
+      />
     </li>
   );
 }

@@ -150,6 +150,7 @@
     color: var(--color-foreground);
     border-radius: 0.5rem;
     margin-top: 0.5rem;
+    cursor: pointer;
 }
 
 /* Metadata helper button styles */
