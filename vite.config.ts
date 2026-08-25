@@ -5,6 +5,7 @@ import path from 'path';
 // Aliases mirror tsconfig.json paths - keep both in sync when folders change.
 export default defineConfig({
   plugins: [react()],
+  base: "/portfoliov2/",
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
