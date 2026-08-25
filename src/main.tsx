@@ -8,7 +8,7 @@ import './utils/fontawesome/fontawesome';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/portfoliov2'>
       <StyleProvider>
         <App />
       </StyleProvider>
