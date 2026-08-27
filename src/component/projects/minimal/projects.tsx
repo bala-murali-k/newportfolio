@@ -184,7 +184,7 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
         {activeView === 'architecture' && (
           <div data-architecture-wrapper>
             {currentProject.architectureList ? (
-              <img src={currentProject.architectureList} alt={`${currentProject.title} architecture`} />
+              <img src={`${import.meta.env.BASE_URL}${currentProject.architectureList}`} alt={`${currentProject.title} architecture`} />
             ) : (
               <p data-empty-notice>No architecture blueprint available.</p>
             )}

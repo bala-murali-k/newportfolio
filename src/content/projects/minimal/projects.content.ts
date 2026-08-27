@@ -73,7 +73,7 @@ export const projectsContent: MinimalProject[] = [
         architectureList: null,
         hostedLink: 'https://github.com/bala-murali-k/portfolio',
         imageType: 'Local',
-        imageSource: '/images/projects/portfolio_v1_ss.png',
+        imageSource: 'images/projects/portfolio_v1_ss.png',
         imageAltText: 'Home page screenshot',
         publicCodeLink: null,
         publicCodeSource: null
@@ -92,10 +92,10 @@ export const projectsContent: MinimalProject[] = [
       "Desktop layout mechanics adapt cleanly to native scrolling and responsive fallback containers for mobile screens.",
       "Built with React, Vite, and TypeScript using a Core + Swappable-Children pattern and data-attribute styling isolation."
     ],
-    architectureList: '/images/projects/Portfolio-Architecture-Image.png',
+    architectureList: 'images/projects/Portfolio-Architecture-Image.png',
     hostedLink: null,
     imageType: 'Local',
-    imageSource: '/images/projects/portfolio_v2_ss.png',
+    imageSource: 'images/projects/portfolio_v2_ss.png',
     imageAltText: 'Home page screenshot',
     publicCodeLink: null,
     publicCodeSource: null
@@ -120,7 +120,7 @@ export const projectsContent: MinimalProject[] = [
     architectureList: null,
     hostedLink: null,
     imageType: 'Local',
-    imageSource: '/images/projects/portfolio_v2_ss.png',
+    imageSource: 'images/projects/portfolio_v2_ss.png',
     imageAltText: 'Home page screenshot',
     publicCodeLink: null,
     publicCodeSource: null
