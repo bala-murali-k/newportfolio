@@ -1,22 +1,55 @@
-import type { AboutContent } from '@content/about/about.content';
+import React, { useEffect, useState } from 'react';
+import type { MinimalHeroContent } from '@content/about/minimal/about.content';
+import { ArrowRight } from "lucide-react";
 
-interface BioProps {
-  content: AboutContent;
+interface MastheadProps {
+  content: MinimalHeroContent;
 }
 
-export default function BioV1({ content }: BioProps) {
+const DISPLAY_DURATION = 4000; // ms each paragraph stays visible
+const SLIDE_DURATION = 500;    // must match CSS transition duration
+
+export default function MastheadV1({ content }: MastheadProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [animState, setAnimState] = useState<'idle' | 'out' | 'in'>('idle');
+
+  useEffect(() => {
+    if (content.bio.length <= 1) return;
+
+    const cycle = setInterval(() => {
+      setAnimState('out');
+
+      setTimeout(() => {
+        setActiveIndex((prev) => (prev + 1) % content.bio.length);
+        setAnimState('in');
+
+        setTimeout(() => {
+          setAnimState('idle');
+        }, SLIDE_DURATION);
+      }, SLIDE_DURATION);
+    }, DISPLAY_DURATION);
+
+    return () => clearInterval(cycle);
+  }, [content.bio.length]);
+
   return (
-    <div data-component="bio">
-      <p>{content.summary}</p>
-      <ul>
-        {content.socials.map((social) => (
-          <li key={social.label}>
-            <a href={social.url} target="_blank" rel="noreferrer">
-              {social.label}
+    <div data-component="about-hero-section">
+      <h2>{content.title}</h2>
+      <div data-component-section="bio-viewport">
+        <p data-component-section="bio-line" data-anim-state={animState}>
+          {content.bio[activeIndex]}
+        </p>
+      </div>
+      {
+        content.actionLabel && (
+          <div>
+            <a type="button" data-action-btn>
+              {content.actionLabel}
+              <ArrowRight />
             </a>
-          </li>
-        ))}
-      </ul>
+          </div>
+        )
+      }
     </div>
   );
 }

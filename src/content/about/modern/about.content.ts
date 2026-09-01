@@ -1,9 +1,12 @@
-import type { AboutContent } from '../about.content';
+import type { About } from '../about.content';
 
-export const aboutContent: AboutContent = {
-  summary: 'Short bio goes here. Replace with your own introduction.',
-  socials: [
-    { label: 'GitHub', url: 'https://github.com/yourname' },
-    { label: 'LinkedIn', url: 'https://linkedin.com/in/yourname' },
-  ],
+export const aboutContent: About = {
+  hero: {
+    title: "About Me",
+    description: "This is the section for describing about me.",
+    availablity: "Available Now"
+  },
+  professionalTimeline: [],
+  workProgress: [],
+  hobbies: []
 };

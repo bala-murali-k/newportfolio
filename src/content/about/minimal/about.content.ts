@@ -1,9 +1,77 @@
-import type { AboutContent } from '../about.content';
+  import type { About } from '../about.content';
 
-export const aboutContent: AboutContent = {
-  summary: 'Builder. Straight to the point.',
-  socials: [
-    { label: 'GitHub', url: 'https://github.com/yourname' },
-    { label: 'LinkedIn', url: 'https://linkedin.com/in/yourname' },
+export interface MinimalHeroContent {
+  title: string,
+  bio: string[],
+  actionLabel: string,
+}
+
+interface MinimalProfessionalTimeline {
+  period: string,
+  role: string,
+  organization: string,
+  summary: string,
+}
+
+interface MinimalWorkProgressContent {
+  step: string,
+  title: string,
+  description: string,
+}
+
+interface MinimalHobbiesContent {
+  category: string,
+  details: string[]
+}
+
+export interface MinimalAboutContent extends About {
+  hero: MinimalHeroContent,
+  professionalTimeline: MinimalProfessionalTimeline[],
+  workProgress: MinimalWorkProgressContent[],
+  hobbies: MinimalHobbiesContent
+}
+
+export const aboutContent: MinimalAboutContent = {
+  hero: {
+    title: "ABOUT MYSELF",
+    bio: [
+      "I am a frontend engineer focused on structural paradigms and architectural insights.",
+      "I specialize in building modular, theme-agnostic systems with strict separation of concerns, prioritizing performance and maintainable code over transient trends."
+    ],
+    actionLabel: "Timeline"
+  },
+  professionalTimeline: [
+    {
+      period: "2024 — Present",
+      role: "Frontend Engineer",
+      organization: "Gove Technologies",
+      summary: "Architecting modular, theme-agnostic React systems with strict separation of concerns and data-attribute styling."
+    }
   ],
+  workProgress: [
+    {
+      step: "01",
+      title: "Discovery",
+      description: "Analyzing structural requirements and establishing decoupled schemas before writing markup[cite: 1]."
+    },
+    {
+      step: "02",
+      title: "Execution",
+      description: "Implementing core layouts and swappable UI components utilizing strict TypeScript interfaces[cite: 1]."
+    },
+    {
+      step: "03",
+      title: "Refinement",
+      description: "Optimizing viewport mechanics, accessibility, and smooth CSS entrance animations[cite: 1]."
+    }
+  ],
+  hobbies: {
+    category: "Off-Screen (Analog)",
+    details: [
+      "Mechanical Keyboards",
+      "Typography Design",
+      "Minimalist Architecture",
+      "Reading & Watchig Sci-Fi"
+    ]
+  }
 };

@@ -132,3 +132,15 @@
 [data-style='minimal'] [data-tooltip][data-tooltip-type='image'] [data-stack-name] {
    font-family: var(--font-hero, 'Mozilla Headline', cursive, sans-serif);
 }
+
+[data-style='minimal'] [data-component='about-hero-section'] h2 {
+   font-family: var(--font-hero, 'Mozilla Headline', cursive, sans-serif);
+}
+
+[data-style='minimal'] [data-component="about-section-1"] {
+   font-family: var(--font-header, 'Stack Sans Headline', sans-serif);
+}
+
+[data-style='minimal'] [data-action-btn] {
+   font-family: var(--font-header, 'Stack Sans Headline', sans-serif);
+}

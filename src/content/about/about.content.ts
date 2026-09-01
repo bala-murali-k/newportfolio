@@ -8,11 +8,24 @@ export interface AboutContent {
   socials: Social[];
 }
 
+export interface About {
+  hero: unknown;
+  professionalTimeline: unknown;
+  workProgress: unknown;
+  hobbies: unknown;
+}
+
 /**
  * Fallback content, used when the active style has no content of its own
  * at content/about/<style-id>/about.<style-id>.content.ts yet.
  */
-export const aboutContent: AboutContent = {
-  summary: 'Add a short introduction here.',
-  socials: [],
+export const aboutContent: About = {
+  hero: {
+    title: "About Me",
+    description: "This is the section for describing about me.",
+    availablity: "Available Now"
+  },
+  professionalTimeline: [],
+  workProgress: [],
+  hobbies: []
 };
