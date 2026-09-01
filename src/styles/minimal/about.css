@@ -86,8 +86,10 @@
     line-height: 1;
 }
 
+
+
 /* Finisher style */
-[data-style='minimal'] [data-component="about-section-2"] {
+[data-style='minimal'] [data-component="about-section-5"] {
     position: relative;
 }
 

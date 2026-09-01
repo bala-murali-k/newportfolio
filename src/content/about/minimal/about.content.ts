@@ -6,14 +6,14 @@ export interface MinimalHeroContent {
   actionLabel: string,
 }
 
-interface MinimalProfessionalTimeline {
+export interface MinimalProfessionalTimeline {
   period: string,
   role: string,
   organization: string,
   summary: string,
 }
 
-interface MinimalWorkProgressContent {
+export interface MinimalWorkProgressContent {
   step: string,
   title: string,
   description: string,
@@ -41,6 +41,24 @@ export const aboutContent: MinimalAboutContent = {
     actionLabel: "Timeline"
   },
   professionalTimeline: [
+    {
+      period: "2024 — Present",
+      role: "Frontend Engineer",
+      organization: "Gove Technologies",
+      summary: "Architecting modular, theme-agnostic React systems with strict separation of concerns and data-attribute styling."
+    },
+    {
+      period: "2024 — Present",
+      role: "Frontend Engineer",
+      organization: "Gove Technologies",
+      summary: "Architecting modular, theme-agnostic React systems with strict separation of concerns and data-attribute styling."
+    },
+    {
+      period: "2024 — Present",
+      role: "Frontend Engineer",
+      organization: "Gove Technologies",
+      summary: "Architecting modular, theme-agnostic React systems with strict separation of concerns and data-attribute styling."
+    },
     {
       period: "2024 — Present",
       role: "Frontend Engineer",
