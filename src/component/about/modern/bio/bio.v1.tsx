@@ -1,22 +1,12 @@
-import type { AboutContent } from '@content/about/about.content';
+import type { About } from '@content/about/about.content';
 
 interface BioProps {
-  content: AboutContent;
+  content: About;
 }
 
 export default function BioV1({ content }: BioProps) {
   return (
     <div data-component="bio">
-      <p>{content.summary}</p>
-      <ul>
-        {content.socials.map((social) => (
-          <li key={social.label}>
-            <a href={social.url} target="_blank" rel="noreferrer">
-              {social.label}
-            </a>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
